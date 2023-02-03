@@ -34,7 +34,7 @@ class authController{
             await user.save()
             return res.json({message: `Пользователь был успешно зарегистрирован`})
         } catch (e) {
-            res.status(400).json({message: 'Registration error'})
+            res.status(400).json({message: 'Ошибка при регистрации'})
         }
     }
     async changeValue(req,res){
@@ -61,7 +61,7 @@ class authController{
             const {username, password} = req.body
             const user = await User.findOne({username})
             if (!user) {
-                return res.status(400).json({message: `Пользователь ${username} не найден`})
+                return res.status(404).json({message: `Пользователь ${username} не найден`})
             }
             const validPassword = bcrypt.compareSync(password,user.password)
             if(!validPassword) {
@@ -70,7 +70,7 @@ class authController{
             const token = generateAccessToken(user._id,user.roles)
             return res.json({token})
         } catch (e) {
-            res.status(400).json({message: 'Login error'})
+            res.status(400).json({message: 'Ошибка входа'})
         }
     }
     async getUsers(req,res){
@@ -78,7 +78,7 @@ class authController{
             const users = await User.find()
             res.json(users)
         } catch (e) {
-            
+            console.error
         }
     }
 }
