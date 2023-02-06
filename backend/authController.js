@@ -20,21 +20,21 @@ class authController{
         try {
             const errors = validationResult(req)
             if (!errors.isEmpty()) {
-                return res.status(400).json({message: 'Ошибка при регистрации',errors})
+                return res.status(400).json({message: 'Registration error',errors})
 
             }
             const {username, password} = req.body
             const candidate = await User.findOne({username})
             if (candidate) {
-                return res.status(400).json({message: 'Пользователь с таким именем уже существует'})
+                return res.status(400).json({message: 'A user with the same name already exists'})
             }
             const hashPassword = bcrypt.hashSync(password, 7);
             const userRole = await Role.findOne({value: 'USER'})
             const user = new User({username,password: hashPassword, roles: [userRole.value]})
             await user.save()
-            return res.json({message: `Пользователь был успешно зарегистрирован`})
+            return res.json({message: `The user has been successfully registered`})
         } catch (e) {
-            res.status(400).json({message: 'Ошибка при регистрации'})
+            res.status(400).json({message: 'Registration error'})
         }
     }
     async changeValue(req,res){
@@ -51,9 +51,9 @@ class authController{
             userRole.age = age || userRole.age
 
             await userRole.save()
-            return res.json({message: `Пользователь был успешно обновлен`,userRole})
+            return res.json({message: `The user has been successfully updated`,userRole})
         } catch (e) {
-            res.status(400).json({message: 'Ошибка обновления пользователя'})
+            res.status(400).json({message: 'User update error'})
         }
     }
     async login(req,res){
@@ -61,16 +61,16 @@ class authController{
             const {username, password} = req.body
             const user = await User.findOne({username})
             if (!user) {
-                return res.status(404).json({message: `Пользователь ${username} не найден`})
+                return res.status(404).json({message: `User ${username} not found`})
             }
             const validPassword = bcrypt.compareSync(password,user.password)
             if(!validPassword) {
-                return res.status(400).json({message: `Неверный пароль`})
+                return res.status(400).json({message: `Incorrect password`})
             }
             const token = generateAccessToken(user._id,user.roles)
             return res.json({token})
         } catch (e) {
-            res.status(400).json({message: 'Ошибка входа'})
+            res.status(400).json({message: 'Login failed'})
         }
     }
     async getUsers(req,res){

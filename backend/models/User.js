@@ -5,7 +5,7 @@ const User = new Schema({
     roles :  [{type: String, ref: 'Role'}],
     name : {type: String},
     gender : {type: String},
-    activity : {type: String},
+    activity : {type: Number},
     weight : {type: Number},
     height : {type: Number},
     age : {type: Number},
