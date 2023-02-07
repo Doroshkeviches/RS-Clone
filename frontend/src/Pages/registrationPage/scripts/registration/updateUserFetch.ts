@@ -1,3 +1,4 @@
+import { url } from './url';
 export function updateUserFetch(
   username: string,
   name: string,
@@ -7,19 +8,19 @@ export function updateUserFetch(
   age: string,
   activity: string
 ) {
-  fetch(`http://localhost:5000/auth/updateUser`, {
+  fetch(url + `updateUser`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      username: `${username}`,
-      name: `${name}`,
-      gender: `${gender}`,
-      activity: `${activity}`,
-      weight: `${weight}`,
-      height: `${height}`,
-      age: `${age}`,
+      username,
+      name,
+      gender,
+      activity,
+      weight,
+      height,
+      age,
     }),
   })
     .then((res) => res.json())

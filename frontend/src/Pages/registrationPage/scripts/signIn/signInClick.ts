@@ -1,4 +1,4 @@
-export function signInBtn() {
+export function signInBtnChange() {
   const signIn = document.getElementById('signIn') as HTMLElement;
   const signUp = document.getElementById('loginLink') as HTMLElement;
   signIn.addEventListener('click', () => {

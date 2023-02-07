@@ -1,8 +1,8 @@
 import { renderRegistrationPage } from './renderRegistrationPage';
-
+import { url } from './url';
 export function registrationFetch(username: string, password: string) {
   const message = document.getElementById('message') as HTMLElement;
-  fetch(`http://localhost:5000/auth/registration`, {
+  fetch(url + 'registration', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

@@ -1,13 +1,14 @@
+import { url } from '../registration/url';
 export function loginFetch(username: string, password: string) {
   const message = document.getElementById('message') as HTMLElement;
-  fetch(`http://localhost:5000/auth/login`, {
+  fetch(url + `login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      username: `${username}`,
-      password: `${password}`,
+      username,
+      password,
     }),
   })
     .then((res) => res.json())
