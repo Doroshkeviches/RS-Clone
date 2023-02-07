@@ -5,13 +5,14 @@ export function SignUpBtn() {
   const height = document.getElementById('height') as HTMLInputElement;
   const age = document.getElementById('age') as HTMLInputElement;
   const activity = document.getElementById('activity') as HTMLInputElement;
-  const genderCollection: NodeListOf<HTMLElement> =
-    document.getElementsByName('gender');
+  const genderCollection = document.getElementsByName(
+    'gender'
+  ) as NodeListOf<HTMLInputElement>;
   const username = localStorage.getItem('username') as string;
   let gender = '';
   genderCollection.forEach((item) => {
-    if ((item as HTMLInputElement).checked === true) {
-      gender = (item as HTMLInputElement).value;
+    if (item.checked === true) {
+      gender = item.value;
     }
   });
   updateUserFetch(
