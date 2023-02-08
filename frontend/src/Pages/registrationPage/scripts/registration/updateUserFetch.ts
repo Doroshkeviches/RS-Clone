@@ -1,4 +1,4 @@
-import { url } from './url';
+import { url } from '../../../../constants';
 export function updateUserFetch(
   username: string,
   name: string,

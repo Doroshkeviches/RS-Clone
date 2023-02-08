@@ -1,4 +1,4 @@
-import { url } from '../registration/url';
+import { url } from '../../../../constants';
 export function loginFetch(username: string, password: string) {
   const message = document.getElementById('message') as HTMLElement;
   fetch(url + `login`, {

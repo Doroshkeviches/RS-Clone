@@ -1,4 +1,4 @@
-import { SignUpBtnClick } from './signUpBtnClick';
+import { SignUpBtnClickListener } from './signUpBtnClick';
 export function renderRegistrationPage() {
   const container = document.getElementById('container') as HTMLElement;
   container.innerHTML = `
@@ -20,5 +20,5 @@ export function renderRegistrationPage() {
                 <input type="number" value="" id="activity" placeholder="Trains per week ( 2 )">
                 <button class="submit" id="SignUpBtn">Sign Up</button>
         `;
-  SignUpBtnClick();
+  SignUpBtnClickListener();
 }

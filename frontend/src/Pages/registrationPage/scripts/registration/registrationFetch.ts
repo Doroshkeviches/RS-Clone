@@ -1,5 +1,5 @@
 import { renderRegistrationPage } from './renderRegistrationPage';
-import { url } from './url';
+import { url } from '../../../../constants';
 export function registrationFetch(username: string, password: string) {
   const message = document.getElementById('message') as HTMLElement;
   fetch(url + 'registration', {
