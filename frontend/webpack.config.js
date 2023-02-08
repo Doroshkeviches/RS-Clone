@@ -10,6 +10,7 @@ module.exports = (env, argv) => {
     new HTMLWebpackPlugin(
       {
         title: "RS-Clone",
+        template: './src/index.html'
       },
     ),
     new EslingPlugin(
