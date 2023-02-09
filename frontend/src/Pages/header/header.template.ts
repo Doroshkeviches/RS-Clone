@@ -4,7 +4,8 @@ export interface component {
   template: string;
 }
 
-export const headerTemplate: component = { //TODO Delete active-link
+export const headerTemplate: component = {
+  //TODO Delete active-link
   template: `
   <header class="header">
     <div class="container">
@@ -28,5 +29,5 @@ export const headerTemplate: component = { //TODO Delete active-link
         </ul>
       </nav>
     </div>
-  </header>`
-}
+  </header>`,
+};
