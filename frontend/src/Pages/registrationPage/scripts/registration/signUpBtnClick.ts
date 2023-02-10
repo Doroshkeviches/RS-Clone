@@ -1,5 +1,5 @@
-import { getInputsValues } from './SignUpBtn';
-export function SignUpBtnClickListener() {
+import { fillProfileValues } from './SignUpBtn';
+export function handleSignUpBtn() {
   const SignUp = document.getElementById('SignUpBtn') as HTMLElement;
-  SignUp.addEventListener('click', getInputsValues);
+  SignUp.addEventListener('click', fillProfileValues);
 }

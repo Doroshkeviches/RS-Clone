@@ -1,8 +1,8 @@
-import { signUpClickListener } from './signUp/signUpClick';
+import { handleSignUp } from './signUp/signUpClick';
 import { signInBtnChange } from './signIn/signInClick';
-import { submitClickListener } from './signIn/submitBtn';
-export function regPageStart() {
-  signUpClickListener();
+import { handleSubmit } from './signIn/submitBtn';
+export function registrationPageInit() {
+  handleSignUp();
   signInBtnChange();
-  submitClickListener();
+  handleSubmit();
 }

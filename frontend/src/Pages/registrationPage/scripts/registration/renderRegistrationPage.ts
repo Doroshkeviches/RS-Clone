@@ -1,6 +1,8 @@
-import { SignUpBtnClickListener } from './signUpBtnClick';
+import { handleSignUpBtn } from './signUpBtnClick';
 export function renderRegistrationPage() {
-  const container = document.getElementById('container') as HTMLElement;
+  const container = document.getElementById(
+    'registrationContainer'
+  ) as HTMLElement;
   container.innerHTML = `
         <div class="SignUp">Sign Up</div>
         <input type="text" value="" id="name" placeholder="Name (Ivan)">
@@ -20,5 +22,5 @@ export function renderRegistrationPage() {
                 <input type="number" value="" id="activity" placeholder="Trains per week ( 2 )">
                 <button class="submit" id="SignUpBtn">Sign Up</button>
         `;
-  SignUpBtnClickListener();
+  handleSignUpBtn();
 }

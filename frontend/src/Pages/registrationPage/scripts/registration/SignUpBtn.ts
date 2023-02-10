@@ -1,5 +1,5 @@
 import { updateUserFetch } from './updateUserFetch';
-export function getInputsValues() {
+export function fillProfileValues() {
   const name = document.getElementById('name') as HTMLInputElement;
   const weight = document.getElementById('weight') as HTMLInputElement;
   const height = document.getElementById('height') as HTMLInputElement;
@@ -11,7 +11,7 @@ export function getInputsValues() {
   const username = localStorage.getItem('username') as string;
   let gender = 'Male';
   genderCollection.forEach((item) => {
-    if (item.checked === true) {
+    if (item.checked) {
       gender = item.value;
     }
   });

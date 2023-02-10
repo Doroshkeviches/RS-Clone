@@ -1,27 +1,10 @@
 
-html 
-	background: $color-bagckground
-	display: flex
-	align-items: center
-	justify-content: center
-	height: 100vh
-
-body 
-	width: 26.4%
-
 input[type=text], input[type=number] 
-	appearance: auto
 	width: 100%
-	border: 0px 
 	background: $color-white
 	border-radius: 8px
 	margin-bottom: 16px
 	padding: 20px 0px 20px 0px
-	font-family: 'Inter'
-	font-style: normal
-	font-weight: 400
-	font-size: 16px
-	letter-spacing: -0.017em
 	text-indent: 24px
 
 .submit 
@@ -30,14 +13,8 @@ input[type=text], input[type=number]
 	background: $color-lightorange
 	border-radius: 8px
 	padding: 16px 24px
-	font-family: 'Inter'
-	font-style: normal
-	font-weight: 600
-	font-size: 16px
 	line-height: 140%
-	border: 0px
 	color: $color-white
-	letter-spacing: -0.017em
 	cursor: pointer
 
 #sign 
@@ -46,25 +23,27 @@ input[type=text], input[type=number]
 	justify-content: space-between
 	align-items: flex-end
 
-#signIn, #loginLink, .SignUp 
-	font-family: 'Inter'
-	font-style: normal
+#signIn, #signUpHeader, .SignUp 
 	font-weight: 600
 	font-size: 40px
 	line-height: 140%
-	letter-spacing: -0.017em
-	color: @$color-black
+	color: $color-black
 	margin-bottom: 40px
 
-#loginLink 
+#signUpHeader 
 	font-size: 16px
 
-#container 
+.registrationContainer 
 	display: flex
 	justify-content: center
 	align-items: center
 	flex-direction: column
 	flex-wrap: wrap
+	max-width: 500px
+	min-width: 300px
+	margin: 0 auto
+	height: 100vh
+	padding: 0 30px
 
 #radioGender 
 	display: flex
@@ -74,13 +53,9 @@ input[type=text], input[type=number]
 .radioGender_item 
 	width: 49%
 	background-color: $color-white
-	font-family: 'Inter'
-	font-style: normal
 	font-weight: 400
-	font-size: 16px
 	line-height: 140%
-	letter-spacing: -0.017em
-	color: @$color-black
+	color: $color-black
 	margin-bottom: 16px
 	padding: 20px 0px 20px 0px
 	border-radius: 8px

@@ -1,7 +1,7 @@
 import { renderRegistrationPage } from './renderRegistrationPage';
 import { url } from '../../../../constants';
-export function registrationFetch(username: string, password: string) {
-  const message = document.getElementById('message') as HTMLElement;
+export function createUser(username: string, password: string) {
+  let message = '';
   fetch(url + 'registration', {
     method: 'POST',
     headers: {
@@ -14,9 +14,10 @@ export function registrationFetch(username: string, password: string) {
   })
     .then((res) => res.json())
     .then((data) => {
-      message.innerHTML = `${data.message}`;
+      message = data.message;
       if (data.message === 'The user has been successfully registered') {
         renderRegistrationPage();
       }
     });
+  return message;
 }
