@@ -21,12 +21,11 @@ export class Module {
       (r) => r.path === url
     ) as routesObj;
 
-    if (route !== undefined) {
-      (document.querySelector('body') as HTMLElement).innerHTML = `<${
-        route.component.selector || 'page-component'
-      }>${route.component.template}</${
-        route.component.selector || 'page-component'
-      }>`;
+    if (route) {
+      (document.querySelector('body') as HTMLElement).innerHTML =
+        route.component.template;
+    } else {
+      window.location.hash = '404';
     }
   }
 }
