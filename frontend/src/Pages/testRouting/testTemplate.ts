@@ -1,7 +1,4 @@
-import { component } from 'Routes/Routes.interface';
-
-export const testTemplate: component = {
-  template: `
+export const testTemplate = `
   <section class="basket">
   <div class="product">
     <div class="product__control">
@@ -34,5 +31,4 @@ export const testTemplate: component = {
     <p class="promo-test">Promo for test: 'RS', 'EPM'</p>
     <button class="buy">Buy now</button>
   </div>
-</section>`,
-};
+</section>`;

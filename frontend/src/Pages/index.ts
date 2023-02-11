@@ -1,2 +1,12 @@
 import { registrationPageInit } from './registrationPage/scripts';
-registrationPageInit();
+
+export function addFunctionalToPage(url: string) {
+  switch (url) {
+    case '':
+      registrationPageInit();
+      break;
+    case 'autorization':
+      registrationPageInit();
+      break;
+  }
+}

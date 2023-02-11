@@ -1,3 +1,5 @@
+import { headerTemplate } from '../Pages/header/header.template';
+import { addFunctionalToPage } from '../Pages/index';
 import { router } from './router';
 import { config, routes, routesObj } from './Routes.interface';
 
@@ -22,11 +24,15 @@ export class Module {
     ) as routesObj;
 
     if (route !== undefined) {
-      (document.querySelector('body') as HTMLElement).innerHTML = `<${
-        route.component.selector || 'page-component'
-      }>${route.component.template}</${
-        route.component.selector || 'page-component'
-      }>`;
+      (document.querySelector('body') as HTMLElement).innerHTML = `
+       ${headerTemplate}
+       <main>
+        ${route.component}
+       </main>`;
+    } else {
+      window.location.hash = '404';
     }
+
+    addFunctionalToPage(url);
   }
 }

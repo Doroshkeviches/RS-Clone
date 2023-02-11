@@ -8,11 +8,6 @@ export interface routes {
 }
 
 export interface routesObj {
-  component: component;
+  component: string;
   path: string;
-}
-
-export interface component {
-  selector?: string;
-  template: string;
 }
