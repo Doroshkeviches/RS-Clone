@@ -1,4 +1,4 @@
-export function signInBtnChange() {
+export function handleSignIn() {
   const signIn = document.getElementById('signIn') as HTMLElement;
   const signUp = document.getElementById('signUpHeader') as HTMLElement;
   signIn.addEventListener('click', () => {
