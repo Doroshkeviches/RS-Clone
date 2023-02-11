@@ -24,11 +24,8 @@ export class Module {
     ) as routesObj;
 
     if (route !== undefined) {
-      (document.querySelector('body') as HTMLElement).innerHTML = `
-       ${headerTemplate}
-       <main>
-        ${route.component}
-       </main>`;
+      (document.querySelector('.root') as HTMLElement).innerHTML =
+        route.component;
     } else {
       window.location.hash = '404';
     }
