@@ -1,4 +1,4 @@
-import { updateUserFetch } from './updateUserFetch';
+import { updateUser } from './updateUserFetch';
 export function fillProfileValues() {
   const name = document.getElementById('name') as HTMLInputElement;
   const weight = document.getElementById('weight') as HTMLInputElement;
@@ -15,7 +15,7 @@ export function fillProfileValues() {
       gender = item.value;
     }
   });
-  updateUserFetch(
+  updateUser(
     username,
     name.value,
     gender,

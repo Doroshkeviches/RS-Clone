@@ -1,5 +1,5 @@
 import { url } from '../../../../constants';
-export function updateUserFetch(
+export function updateUser(
   username: string,
   name: string,
   gender: string,

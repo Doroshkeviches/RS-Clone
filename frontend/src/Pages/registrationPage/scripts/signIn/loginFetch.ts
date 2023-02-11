@@ -1,5 +1,5 @@
 import { url } from '../../../../constants';
-export function loginFetch(username: string, password: string) {
+export function login(username: string, password: string) {
   const message = document.getElementById('message') as HTMLElement;
   fetch(url + `login`, {
     method: 'POST',
@@ -13,8 +13,9 @@ export function loginFetch(username: string, password: string) {
   })
     .then((res) => res.json())
     .then((data) => {
+      message.innerHTML = data.message;
       if (!data.token) {
-        message.innerHTML = `${data.message}`;
+        message.innerHTML = data.message;
       } else {
         //TODO перенаправление на след. страницу
       }

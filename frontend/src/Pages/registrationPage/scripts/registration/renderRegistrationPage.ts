@@ -4,7 +4,7 @@ export function renderRegistrationPage() {
     'registrationContainer'
   ) as HTMLElement;
   container.innerHTML = `
-        <div class="SignUp">Sign Up</div>
+        <div class="signUp">Sign Up</div>
         <input type="text" value="" id="name" placeholder="Name (Ivan)">
             <div id="radioGender">
                 <div class="radioGender_item">
@@ -20,7 +20,7 @@ export function renderRegistrationPage() {
                 <input type="number" value="" id="height" placeholder="Enter your height ( 170 )">
                 <input type="number" value="" id="age" placeholder="20">
                 <input type="number" value="" id="activity" placeholder="Trains per week ( 2 )">
-                <button class="submit" id="SignUpBtn">Sign Up</button>
+                <button class="submit" id="signUpBtn">Sign Up</button>
         `;
   handleSignUpBtn();
 }
