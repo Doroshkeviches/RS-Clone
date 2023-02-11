@@ -7,5 +7,4 @@
     "target": "es3",
     "moduleResolution": "node",
   },
-  
 }
