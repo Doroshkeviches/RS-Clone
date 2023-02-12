@@ -1,13 +1,9 @@
 import { Module } from './module';
 import { appRoutes } from './app.routes';
-import { config, routes } from './Routes.interface';
+import { routes } from './Routes.interface';
 
-class appModules extends Module {
-  constructor(config: config) {
-    super(config);
-  }
-}
-
-export const appModule = new appModules({
+export const appModule = new Module({
   routes: appRoutes as routes,
 });
+
+appModule.start();

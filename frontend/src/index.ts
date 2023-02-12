@@ -1,3 +1,3 @@
 import './index.sass';
-import './Routes/index.rout';
+import './Routes/app.module';
 import './Pages/index';

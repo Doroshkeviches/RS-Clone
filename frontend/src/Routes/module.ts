@@ -1,4 +1,5 @@
-import { addFunctionalToPage } from '../Pages/index';
+import { initPage } from '../Pages/index';
+import { createBasePage } from './base.page';
 import { router } from './router';
 import { config, routes, routesObj } from './Routes.interface';
 
@@ -8,15 +9,16 @@ export class Module {
     this.routes = config.routes;
   }
   start() {
+    createBasePage();
     if (this.routes) this.initRoutes();
   }
 
   initRoutes() {
-    window.addEventListener('hashchange', this.renderRout.bind(this));
-    window.addEventListener('load', this.renderRout.bind(this));
+    window.addEventListener('hashchange', this.renderPage.bind(this));
+    window.addEventListener('load', this.renderPage.bind(this));
   }
 
-  renderRout() {
+  renderPage() {
     const url: string = router.getUrl();
     const route: routesObj = this.routes.find(
       (r) => r.path === url
@@ -29,6 +31,6 @@ export class Module {
       window.location.hash = '404';
     }
 
-    addFunctionalToPage(url);
+    initPage(url);
   }
 }
