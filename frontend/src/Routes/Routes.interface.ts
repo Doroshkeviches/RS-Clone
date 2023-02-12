@@ -11,3 +11,7 @@ export interface routesObj {
   component: string;
   path: string;
 }
+
+export interface Module {
+  start: () => void
+}

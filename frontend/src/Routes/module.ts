@@ -1,4 +1,3 @@
-import { headerTemplate } from '../Pages/header/header.template';
 import { addFunctionalToPage } from '../Pages/index';
 import { router } from './router';
 import { config, routes, routesObj } from './Routes.interface';
