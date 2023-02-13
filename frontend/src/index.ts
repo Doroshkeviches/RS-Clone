@@ -4,4 +4,5 @@
 require('./i18n/i18n');
 
 import './index.sass';
+import './Routes/index.rout';
 import './Pages/index';

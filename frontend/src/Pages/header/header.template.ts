@@ -1,11 +1,4 @@
-//TODO Delete after adding routing
-export interface component {
-  selector?: string;
-  template: string;
-}
-
-export const headerTemplate: component = { //TODO Delete active-link
-  template: `
+export const headerTemplate = `
   <header class="header">
     <div class="container">
       <nav class="header__menu">
@@ -28,5 +21,4 @@ export const headerTemplate: component = { //TODO Delete active-link
         </ul>
       </nav>
     </div>
-  </header>`
-}
+  </header>`; //TODO Delete active-link
