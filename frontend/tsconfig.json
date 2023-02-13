@@ -6,5 +6,5 @@
     "module": "CommonJS",
     "target": "es3",
     "moduleResolution": "node",
-  }
+  },
 }
