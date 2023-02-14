@@ -5,9 +5,9 @@ export function getCurrentLanguage(): string {
   return localStorage.getItem('language') || i18next.language || 'en';
 }
 
-export function changeLanguage(lng: string): void {
-  i18next.changeLanguage(lng);
-  localStorage.setItem('language', lng);
+export function changeLanguage(language: string): void {
+  i18next.changeLanguage(language);
+  localStorage.setItem('language', language);
   location.reload();
 }
 
