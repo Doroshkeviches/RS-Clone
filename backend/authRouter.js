@@ -23,5 +23,6 @@ router.get('/users', roleMiddleware(['ADMIN']), controller.getUsers);
 router.put('/updateUser', controller.changeValue);
 router.get('/exercisesList', controller.createExerciseList);
 router.get('/exercises/:name', controller.createExercise);
+router.get('/worckout/:name', controller.createWorckout);
 
 module.exports = router;

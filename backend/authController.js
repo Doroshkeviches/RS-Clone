@@ -4,8 +4,7 @@ const bcrypt = require('bcryptjs');
 const { validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
 const { secret } = require('./config');
-const apiKey = ['bdeff97547msh9e2fb2cf4487c88p1c2cdejsn329751128532', '29e98089a8msh3fd3ed66dc3490ap16249fjsn0f190f5481b5', '381a351d1fmsh49002bfcdd619a8p1fb7b6jsn2dfc9e093608']
-let pointer = 1;
+const workoutHelpers = require('./workout.helpers');
 
 function generateAccessToken(id, roles) {
   const payload = {
@@ -91,23 +90,17 @@ class authController {
     }
   }
   async createExerciseList(req, res) {
-    const options = {
-      method: 'GET',
-      headers: {
-        'X-RapidAPI-Key': 'bdeff97547msh9e2fb2cf4487c88p1c2cdejsn329751128532',
-        'X-RapidAPI-Host': 'exerciseapi3.p.rapidapi.com',
-      },
-    };
+    const options = workoutHelpers.workoutHelpers.options;
     const arrayMuscule = [];
     const nameArr = [];
     const muscule = await fetch(
-      'https://exerciseapi3.p.rapidapi.com/search/muscles/',
+      `${workoutHelpers.workoutHelpers.exerciseApi}muscles/`,
       options
     );
     const dataMuscule = await muscule.json();
     for (let i = 0; i < 5 /*switch to dataMusculeNum*/; i++) {
       const exercise = await fetch(
-        `https://exerciseapi3.p.rapidapi.com/search/?primaryMuscle=${dataMuscule[i]}`,
+        `${workoutHelpers.workoutHelpers.exerciseApi}?primaryMuscle=${dataMuscule[i]}`,
         options
       );
       const dataExercise = await exercise.json();
@@ -115,7 +108,8 @@ class authController {
     }
     const resultArray = await Promise.all(
       arrayMuscule.map(async (exercise) => {
-        const description = await createDescription(exercise.Name);
+        const description =
+          await workoutHelpers.workoutHelpers.createDescription(exercise.Name);
         const objExercise = {
           name: exercise.Name,
           YouTube: exercise['Youtube link'],
@@ -131,19 +125,13 @@ class authController {
     res.json(resultArray);
   }
   async createExercise(req, res) {
-    let nameExercise = req.originalUrl;
-    nameExercise = nameExercise.split(':')[1];
-    const options = {
-      method: 'GET',
-      headers: {
-        'X-RapidAPI-Key': '29e98089a8msh3fd3ed66dc3490ap16249fjsn0f190f5481b5',
-        'X-RapidAPI-Host': 'exerciseapi3.p.rapidapi.com',
-      },
-    };
-
-    const description = await createDescription(nameExercise);
+    const options = workoutHelpers.workoutHelpers.options;
+    const nameExercise = req.params.name;
+    const description = await workoutHelpers.workoutHelpers.createDescription(
+      nameExercise
+    );
     const exercisePromise = await fetch(
-      `https://exerciseapi3.p.rapidapi.com/search/?name=${nameExercise}`,
+      `${workoutHelpers.workoutHelpers.exerciseApi}?name=${nameExercise}`,
       options
     );
     const exercise = await exercisePromise.json();
@@ -156,23 +144,32 @@ class authController {
     };
     res.json(objExercise);
   }
-}
-module.exports = new authController();
-
-async function createDescription(name) {
-  try {
-    const descPromis = await fetch(
-      `https://api.api-ninjas.com/v1/exercises?name=${name}`,
-      {
-        method: 'GET',
-        headers: {
-          'X-Api-Key': 'b1lF+mYDYzeVz4LE8vl10A==SRghM2llzGl4XzzW',
-        },
-      }
+  async createWorckout(req, res) {
+    const options = workoutHelpers.workoutHelpers.options;
+    const nameArr = [];
+    const worckoutName = req.params.name;
+    const exercise = await fetch(
+      `${workoutHelpers.workoutHelpers.exerciseApi}?primaryMuscle=${worckoutName}`,
+      options
     );
-    const response = await descPromis.json();
-    return response[0].instructions;
-  } catch {
-    return '';
+    const dataExercise = await exercise.json();
+    const resultArray = await Promise.all(
+      dataExercise.map(async (exercise) => {
+        const description =
+          await workoutHelpers.workoutHelpers.createDescription(exercise.Name);
+        const objExercise = {
+          name: exercise.Name,
+          YouTube: exercise['Youtube link'],
+          Musclse: exercise['Primary Muscles'],
+          description: description,
+        };
+        if (!nameArr.includes(exercise.name)) {
+          nameArr.push(exercise.Name);
+          return objExercise;
+        }
+      })
+    );
+    res.json(resultArray);
   }
 }
+module.exports = new authController();
