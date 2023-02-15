@@ -21,5 +21,7 @@ router.post(
 router.post('/login', controller.login);
 router.get('/users', roleMiddleware(['ADMIN']), controller.getUsers);
 router.put('/updateUser', controller.changeValue);
+router.get('/exercisesList', controller.createExerciseList);
+router.get('/exercises/:name', controller.createExercise);
 
 module.exports = router;
