@@ -1,0 +1,123 @@
+.leftContainer,
+.rightContainer {
+	width: 49.5%;
+}
+#calculateNutritionContainer {
+	display: flex;
+	justify-content: space-between;
+}
+.item_container{
+background-color: white;
+margin-bottom: 15px;
+border-radius: 8px;
+}
+.leftContainerItems{
+	width: 100%;
+}
+.item_container_calculator{
+	display:  flex;
+	align-items: center;
+}
+.disabled{
+	display: none;
+}
+.calculator_container,
+.total_container_item{
+background-color: white;
+margin-bottom: 20px;
+}
+.total_container_item{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px 20px;
+}
+#total_container_item_nutritions{
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	width: 50%;
+}
+#progress_Container{
+	width: 90% ;
+	margin: 0 auto;
+	height: 5px;	
+	padding: 1px;
+	background: #F0F0F0;
+	border-radius: 2px;
+
+}
+#progress{
+	background: #06B64C;
+	border-radius: 2px;
+	height: 5px;
+	width: 0%;
+}
+#calculator_footer_text{
+	display:flex;
+	justify-content: space-between;
+	width: 50%;
+	margin: 0 auto;
+	
+}
+.left_container_search_button{
+}
+.search_container{
+	width: 100%;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	background-color: white;
+	display: flex;
+	align-items: center;
+}
+input[type =text] {
+	padding: 20px 0px 20px 20px;
+	width: 90%;
+	border: none;
+	font-size: 18px;
+	font-weight: 200;
+}		
+.item_container_nutrients{
+	display:  flex;
+	width: 100%;
+	justify-content: space-evenly;
+
+}
+.containerItemNutrient{
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+.photo{
+	display: flex;
+	align-items: center;
+	height: 100px;
+	width: 40%;
+	justify-content: flex-start;
+	margin-left: 20px;
+}
+.photo_image{
+	height: 100%;
+}
+.photo_container{
+	height: 80%;
+	width: 80%;
+}
+#foodItemPopup{
+	width: 20px;
+	height: 20px;
+	margin-right: 10px;
+}
+.calculator_item_main{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.calculator_aim{
+	display: flex;
+	font-size: 24px;
+	justify-content: space-between;
+	padding: 20px 10px;
+}
+.calculator_aim_text{
+}
