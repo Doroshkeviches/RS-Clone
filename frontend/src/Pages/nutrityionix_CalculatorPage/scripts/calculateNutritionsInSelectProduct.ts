@@ -5,30 +5,31 @@ export function calculateNutritionsInSelectProduct(
   container: HTMLElement,
   weight: number
 ) {
+  const calculateWeight = 100
   const foodName = (
     container.querySelector('#containerItemFoodName') as HTMLElement
   ).innerHTML;
   const foodKcal = (
     (+(container.querySelector('#containerItemKcal') as HTMLElement).innerHTML *
       weight) /
-    100
+    calculateWeight
   ).toFixed(2);
   const foodProtein = (
     (+(container.querySelector('#containerItemProtein') as HTMLElement)
       .innerHTML *
       weight) /
-    100
+    calculateWeight
   ).toFixed(2);
   const foodFat = (
     (+(container.querySelector('#containerItemFat') as HTMLElement).innerHTML *
       weight) /
-    100
+    calculateWeight
   ).toFixed(2);
   const foodCarbohydrate = (
     (+(container.querySelector('#containerItemCarbohydrate') as HTMLElement)
       .innerHTML *
       weight) /
-    100
+    calculateWeight
   ).toFixed(2);
   const totalContainer = document.getElementById(
     'total_container'

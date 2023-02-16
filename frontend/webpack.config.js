@@ -10,6 +10,7 @@ module.exports = (env, argv) => {
     new HTMLWebpackPlugin(
       {
         title: "RS-Clone",
+        template: './src/index.html'
       },
     ),
     new EslingPlugin(
@@ -60,6 +61,10 @@ module.exports = (env, argv) => {
           test: /\.ts$/,
           use: 'ts-loader',
           exclude: /node_modules/,
+        },
+        {
+          test: /\.(png|svg|jpg|jpeg|gif)$/i,
+          type: 'asset/resource',
         },
       ],
     },
