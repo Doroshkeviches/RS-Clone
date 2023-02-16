@@ -23,6 +23,6 @@ router.get('/users', roleMiddleware(['ADMIN']), controller.getUsers);
 router.put('/updateUser', controller.changeValue);
 router.get('/exercisesList', controller.createExerciseList);
 router.get('/exercises/:name', controller.createExercise);
-router.get('/worckout/:name', controller.createWorckout);
+router.get('/workout/:name', controller.createWockout);
 
 module.exports = router;

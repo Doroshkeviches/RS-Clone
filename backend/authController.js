@@ -108,7 +108,9 @@ class authController {
     }
     const resultArray = await Promise.all(
       arrayMuscule.map(async (exercise) => {
-        const videoId = workoutHelpers.workoutHelpers.createVideoId(exercise['Youtube link'])
+        const videoId = workoutHelpers.workoutHelpers.createVideoId(
+          exercise['Youtube link']
+        );
         const objExercise = {
           name: exercise.Name,
           img: `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`,
@@ -141,7 +143,7 @@ class authController {
     };
     res.json(objExercise);
   }
-  async createWorckout(req, res) {
+  async createWockout(req, res) {
     const options = workoutHelpers.workoutHelpers.options;
     const nameArr = [];
     const worckoutName = req.params.name;
