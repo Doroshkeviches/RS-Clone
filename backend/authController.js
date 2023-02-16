@@ -108,13 +108,10 @@ class authController {
     }
     const resultArray = await Promise.all(
       arrayMuscule.map(async (exercise) => {
-        const description =
-          await workoutHelpers.workoutHelpers.createDescription(exercise.Name);
+        const videoId = workoutHelpers.workoutHelpers.createVideoId(exercise['Youtube link'])
         const objExercise = {
           name: exercise.Name,
-          YouTube: exercise['Youtube link'],
-          Musclse: exercise['Primary Muscles'],
-          description: description,
+          img: `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`,
         };
         if (!nameArr.includes(exercise.name)) {
           nameArr.push(exercise.Name);

@@ -9,6 +9,9 @@ function getRandomInt(max) {
 }
 
 const workoutHelpers = {
+  createVideoId(link) {
+    return link.split('=')[1].split('&')[0]
+  },
   options: {
     method: 'GET',
     headers: {
