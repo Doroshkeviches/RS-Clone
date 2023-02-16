@@ -1,4 +1,4 @@
-import WorkoutImg from '../../../Assets/image3.png';
+import { trainObj } from './interface';
 
 export const linksToNewWorckoutTemplate = `
   <li class="menu-workout__item">
@@ -7,14 +7,14 @@ export const linksToNewWorckoutTemplate = `
     </a>
   </li>`;
 
-export function createCellTemplate(/*ResultOnFeth*/) {
+export function createCellTemplate(list: trainObj[], counter: number) {
   //TODO switch param to ResultOnFetch.param
   return `
   <li class="menu-workout__item">
-    <a href="#Training" class="menu-workout__item_link">
-      <img width="280px" height="162px" src="${WorkoutImg}" alt="workoutImg" class="workout__item-img">
+    <a href="#Workout/${list[counter].name}" class="menu-workout__item_link">
+      <img width="280px" height="162px" src="${list[counter].img}" alt="workoutImg" class="workout__item-img">
       <h2 class="menu-workout-title">
-        hard chest
+        ${list[counter].name}
       </h2>
     </a>
   </li>`;

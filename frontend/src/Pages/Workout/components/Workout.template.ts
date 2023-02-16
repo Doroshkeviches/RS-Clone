@@ -3,10 +3,14 @@ import {
   createCellTemplate,
   linksToNewWorckoutTemplate,
 } from './сellsWorckout.template';
+import { WorkoutList } from './trainMass';
+import { trainObj } from './interface';
 
-export function createWorckoutTemplate(sectionName: 'Workout' | 'Exercises') {
-  //TODO add Fetch
-  const trainList = createTrainList(sectionName);
+export async function createWorckoutTemplate(
+  sectionName: 'Workout' | 'Exercises'
+) {
+  const main = document.querySelector('main') as HTMLElement;
+  const trainList = await createTrainList(sectionName);
   const WorkoutTemplate = `
     <div class="container">
      ${navWorckoutTemplate}
@@ -16,21 +20,35 @@ export function createWorckoutTemplate(sectionName: 'Workout' | 'Exercises') {
         </ul>
       </div>
     </div>`;
-  return WorkoutTemplate;
+  main.innerHTML = WorkoutTemplate;
+  const btn = main.querySelector(`.${sectionName}`) as HTMLElement;
+  btn.classList.add('active__worckout-btn');
 }
 
-export function createTrainList(sectionName: 'Workout' | 'Exercises') {
+export async function createTrainList(sectionName: 'Workout' | 'Exercises') {
   let template = '';
-  for (let i = 0; i < 8 /*TODO Switch to Workout amount*/; i++) {
+  const trainList =
+    sectionName === 'Workout' ? WorkoutList : (await exerciseRequest()) || [];
+
+  for (let i = 0; i < trainList.length; i++) {
     if (sectionName === 'Workout') {
       if (i === 0) {
         template += linksToNewWorckoutTemplate;
-      } else {
-        template += createCellTemplate(); //TODO addParam
       }
+      template += createCellTemplate(trainList, i);
     } else {
-      template += createCellTemplate(); //TODO addParam
+      template += createCellTemplate(trainList, i);
     }
   }
   return template;
+}
+
+async function exerciseRequest() {
+  try {
+    return (await fetch(
+      'http://localhost:5000/auth/exercisesList'
+    )) as unknown as trainObj[];
+  } catch (error) {
+    console.error(error);
+  }
 }
