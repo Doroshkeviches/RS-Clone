@@ -19,9 +19,10 @@ export class Module {
   }
 
   renderPage() {
-    const url: string = router.getUrl();
+    const startUrl: string = router.getUrl();
+    console.log(startUrl);
     const route: routesObj = this.routes.find(
-      (r) => r.path === url
+      (r) => r.path === startUrl
     ) as routesObj;
 
     if (route !== undefined) {
@@ -31,6 +32,6 @@ export class Module {
       window.location.hash = '404';
     }
 
-    initPage(url);
+    initPage(startUrl);
   }
 }
