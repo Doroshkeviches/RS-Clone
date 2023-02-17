@@ -126,20 +126,25 @@ class authController {
   async createExercise(req, res) {
     const options = workoutHelpers.workoutHelpers.options;
     const nameExercise = req.params.name;
-    const description = await workoutHelpers.workoutHelpers.createDescription(
-      nameExercise
-    );
+    const secondApiResponse =
+      await workoutHelpers.workoutHelpers.createDescription(nameExercise);
     const exercisePromise = await fetch(
       `${workoutHelpers.workoutHelpers.exerciseApi}?name=${nameExercise}`,
       options
     );
     const exercise = await exercisePromise.json();
     const exerciseObj = exercise[0];
+    const videoId = workoutHelpers.workoutHelpers.createVideoId(
+      exerciseObj['Youtube link']
+    );
     const objExercise = {
       name: exerciseObj.Name,
       YouTube: exerciseObj['Youtube link'],
       Musclse: exerciseObj['Primary Muscles'],
-      description: description,
+      Type: exerciseObj.Type,
+      Img: `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`,
+      equipment: secondApiResponse.equipment,
+      description: secondApiResponse.instructions,
     };
     res.json(objExercise);
   }
@@ -154,13 +159,19 @@ class authController {
     const dataExercise = await exercise.json();
     const resultArray = await Promise.all(
       dataExercise.map(async (exercise) => {
-        const description =
+        const videoId = workoutHelpers.workoutHelpers.createVideoId(
+          exercise['Youtube link']
+        );
+        const secondApiResponse =
           await workoutHelpers.workoutHelpers.createDescription(exercise.Name);
         const objExercise = {
           name: exercise.Name,
           YouTube: exercise['Youtube link'],
           Musclse: exercise['Primary Muscles'],
-          description: description,
+          Type: exercise.Type,
+          Img: `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`,
+          equipment: secondApiResponse.equipment,
+          description: secondApiResponse.instructions,
         };
         if (!nameArr.includes(exercise.name)) {
           nameArr.push(exercise.Name);
