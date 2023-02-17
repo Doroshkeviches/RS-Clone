@@ -33,5 +33,8 @@ export default {
         activity: 'Тренировок в неделю ( 2 )',
       },
     },
+    workout: {
+      exercises: 'Упражнения',
+    },
   },
 };

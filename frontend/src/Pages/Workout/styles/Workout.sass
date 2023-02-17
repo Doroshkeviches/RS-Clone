@@ -3,6 +3,24 @@
   padding: 0 10px
   margin: 0 auto
 
+.main__menu-nagigation
+  margin-top: 18px
+  gap: 20px
+  @include flex(flex, center, center)
+
+.main__manu-navigation--btn
+  height: 57px
+  width: 172px
+  @include flex(flex, center, center)
+
+.active__worckout-btn,
+.main__manu-navigation--btn:hover
+  background-color: $color-white
+  color: $color-lightorange
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.03)
+  border-radius: 8px
+  @include transition(0.3s)
+
 .main__menu-workout
   display: flex
   flex-direction: column
@@ -17,6 +35,7 @@
   width: 280px
   height: 224px
   background-color: $color-white
+  border-radius: 8px
 
 .menu-workout__item_link
   height: 100%
@@ -48,3 +67,9 @@
   font-weight: 400
   font-size: 16px
   color: $color-black
+
+.workout__item-img
+  width: 280px
+  height: 162px
+  border-top-left-radius: 8px
+  border-top-right-radius: 8px
