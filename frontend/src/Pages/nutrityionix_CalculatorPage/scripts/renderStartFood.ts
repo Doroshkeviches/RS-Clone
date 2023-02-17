@@ -1,9 +1,7 @@
 import { handleItemContainerArray } from './handleItemContainerArray';
-import { ucFirst } from './ucFirst';
 import { handleCalculatorSubmit } from './handleCalculatorSubmit';
 import { renderStartFoodHtml } from './renderStartFood.template';
 export function renderStartFood() {
-  
   fetch('https://trackapi.nutritionix.com/v2/natural/nutrients', {
     method: 'POST',
     headers: {
@@ -27,10 +25,17 @@ export function renderStartFood() {
           nf_total_fat: number;
           nf_total_carbohydrate: number;
         }) => {
-          renderStartFoodHtml(element.photo.thumb ,element.food_name ,element.nf_calories ,element.nf_protein ,element.nf_total_fat ,element.nf_total_carbohydrate)
+          renderStartFoodHtml(
+            element.photo.thumb,
+            element.food_name,
+            element.nf_calories,
+            element.nf_protein,
+            element.nf_total_fat,
+            element.nf_total_carbohydrate
+          );
+          handleItemContainerArray();
+          handleCalculatorSubmit();
         }
       );
-      handleItemContainerArray();
-      handleCalculatorSubmit();
     });
 }

@@ -5,7 +5,7 @@ export function calculateNutritionsInSelectProduct(
   container: HTMLElement,
   weight: number
 ) {
-  const calculateWeight = 100
+  const calculateWeight = 100;
   const foodName = (
     container.querySelector('#containerItemFoodName') as HTMLElement
   ).innerHTML;

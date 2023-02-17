@@ -1,24 +1,22 @@
-import { ucFirst } from "./ucFirst";
+import { ucFirst } from './ucFirst';
 export function renderStartFoodHtml(
-    photo: string,
-    food_name: string,
-    nf_calories: number,
-    nf_protein: number,
-    nf_total_fat: number,
-    nf_total_carbohydrate: number) {
+  photo: string,
+  food_name: string,
+  nf_calories: number,
+  nf_protein: number,
+  nf_total_fat: number,
+  nf_total_carbohydrate: number
+) {
+  const leftContainerItems = document.getElementById(
+    'leftContainerItems'
+  ) as HTMLElement;
 
-    const leftContainerItems = document.getElementById(
-        'leftContainerItems'
-      ) as HTMLElement;
-      leftContainerItems.innerHTML = '';
-    leftContainerItems.innerHTML += `
+  leftContainerItems.innerHTML += `
                   <div id="item_container" class="item_container">
                             <div class="calculator_item_main">
                               <div class="photo">
                               <div class="photo_container">
-                              <img class="photo_image" src="${
-                                photo
-                              }" alt="food_photo">
+                              <img class="photo_image" src="${photo}" alt="food_photo">
                               </div>
                                   <p id="containerItemFoodName">${ucFirst(
                                     food_name
@@ -34,27 +32,19 @@ export function renderStartFoodHtml(
                                   <div class="item_container_nutrients">
                                       <div class="kcal">
                                           kcal
-                                          <p id="containerItemKcal">${
-                                            nf_calories
-                                          }</p>
+                                          <p id="containerItemKcal">${nf_calories}</p>
                                       </div>
                                       <div class="containerItemNutrient">
                                           Protein
-                                          <p id="containerItemProtein">${
-                                            nf_protein
-                                          }</p>
+                                          <p id="containerItemProtein">${nf_protein}</p>
                                       </div>
                                       <div class="containerItemNutrient">
                                           Fat
-                                          <p id="containerItemFat">${
-                                            nf_total_fat
-                                          }</p>
+                                          <p id="containerItemFat">${nf_total_fat}</p>
                                       </div>
                                       <div class="containerItemNutrient">
                                           Carbohydrate
-                                          <p id="containerItemCarbohydrate">${
-                                            nf_total_carbohydrate
-                                          }</p>
+                                          <p id="containerItemCarbohydrate">${nf_total_carbohydrate}</p>
                                       </div>
                                   </div>
                               </div>
