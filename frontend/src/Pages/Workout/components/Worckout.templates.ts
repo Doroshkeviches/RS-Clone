@@ -29,7 +29,6 @@ export function createCellTemplate(
   counter: number,
   sectionName: 'Workout' | 'Exercises'
 ) {
-  //TODO switch param to ResultOnFetch.param
   return `
   <li class="menu-workout__item">
     <a href="#${sectionName}/${list[counter].name}" class="menu-workout__item_link">
