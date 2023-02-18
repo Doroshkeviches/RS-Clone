@@ -33,5 +33,8 @@ export default {
         activity: 'Trains per week ( 2 )',
       },
     },
+    workout: {
+      exercises: 'Exercises',
+    },
   },
 };
