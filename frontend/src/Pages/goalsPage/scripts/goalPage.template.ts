@@ -15,4 +15,5 @@ export const goalPageTemplate = `
     <div id="popupSubmit">Submit</div>
     </div>
 </div>
+<div id="background"><div>
 `;

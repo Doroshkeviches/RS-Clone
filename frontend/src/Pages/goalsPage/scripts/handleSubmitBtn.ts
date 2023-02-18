@@ -8,6 +8,8 @@ export function handleSubmitBtn() {
     getInputValue();
     handleCheckbox();
     setGoalsToLocalStorage();
+    const background = document.getElementById('background') as HTMLElement;
+    background.classList.remove('popupActive');
     goalPopup.style.display = 'none';
   });
 }
