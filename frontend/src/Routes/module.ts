@@ -20,7 +20,6 @@ export class Module {
 
   renderPage() {
     const startUrl: string = router.getUrl();
-    console.log(startUrl);
     const route: routesObj = this.routes.find(
       (r) => r.path === startUrl
     ) as routesObj;

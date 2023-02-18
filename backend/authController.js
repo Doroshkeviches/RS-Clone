@@ -126,7 +126,7 @@ class authController {
   async createExercise(req, res) {
     const options = workoutHelpers.workoutHelpers.options;
     const nameExercise = req.params.name;
-    const secondApiResponse =
+    const descriptionApiResponse =
       await workoutHelpers.workoutHelpers.createDescription(nameExercise);
     const exercisePromise = await fetch(
       `${workoutHelpers.workoutHelpers.exerciseApi}?name=${nameExercise}`,
@@ -143,8 +143,8 @@ class authController {
       Musclse: exerciseObj['Primary Muscles'],
       Type: exerciseObj.Type,
       Img: `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`,
-      equipment: secondApiResponse.equipment,
-      description: secondApiResponse.instructions,
+      equipment: descriptionApiResponse.equipment,
+      description: descriptionApiResponse.instructions,
     };
     res.json(objExercise);
   }
@@ -162,7 +162,7 @@ class authController {
         const videoId = workoutHelpers.workoutHelpers.createVideoId(
           exercise['Youtube link']
         );
-        const secondApiResponse =
+        const descriptionApiResponse =
           await workoutHelpers.workoutHelpers.createDescription(exercise.Name);
         const objExercise = {
           name: exercise.Name,
@@ -170,8 +170,8 @@ class authController {
           Musclse: exercise['Primary Muscles'],
           Type: exercise.Type,
           Img: `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`,
-          equipment: secondApiResponse.equipment,
-          description: secondApiResponse.instructions,
+          equipment: descriptionApiResponse.equipment,
+          description: descriptionApiResponse.instructions,
         };
         if (!nameArr.includes(exercise.name)) {
           nameArr.push(exercise.Name);

@@ -12,24 +12,24 @@ export async function fillWorckoutTemplate(
   const main = document.querySelector('.menu-workout__list') as HTMLElement;
   const btn = document.querySelector(`.${sectionName}`) as HTMLElement;
   btn.classList.add('active__worckout-btn');
-  const trainList = await createTrainList(sectionName);
-  main.innerHTML = trainList;
+  const trainingList = await createTrainList(sectionName);
+  main.innerHTML = trainingList;
 }
 
 export async function createTrainList(sectionName: 'Workout' | 'Exercises') {
   let template = '';
-  const trainList =
+  const trainingList =
     sectionName === 'Workout'
       ? WorkoutList
       : ((await exerciseRequest()) as trainObj[]);
-  for (let i = 0; i < trainList.length; i++) {
+  for (let i = 0; i < trainingList.length; i++) {
     if (sectionName === 'Workout') {
       if (i === 0) {
         template += linksToNewWorckoutTemplate;
       }
-      template += createCellTemplate(trainList, i, sectionName);
+      template += createCellTemplate(trainingList, i, sectionName);
     } else {
-      template += createCellTemplate(trainList, i, sectionName);
+      template += createCellTemplate(trainingList, i, sectionName);
     }
   }
   return template;
