@@ -25,7 +25,7 @@ export function updateUser(
   })
     .then((res) => res.json())
     .then(() => {
-      // const currentUrl = window.location.href;
-      // window.location.href = `${currentUrl}#Calculator`; TODO Change Calculator to  Workout
+      const currentUrl = window.location.href;
+      window.location.href = `${currentUrl}#Calculator`; //TODO Change Calculator to  Workout
     });
 }
