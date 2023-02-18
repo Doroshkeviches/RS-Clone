@@ -10,7 +10,7 @@ export function renderStartFood() {
       'x-app-key': '97177c3c508aa3ad4e34a42bf7f0ecb5',
     },
     body: JSON.stringify({
-      query: 'chiken milk beef bread apple cheese',
+      query: 'chiken milk beef bread apple',
       timezone: 'US/Eastern',
     }),
   })

@@ -1,4 +1,5 @@
 export function handleItemContainerArray() {
+  const degreeChange = 180;
   const itemContainerArray = document.querySelectorAll(
     '.item_container'
   ) as NodeListOf<HTMLElement>;
@@ -14,7 +15,7 @@ export function handleItemContainerArray() {
         'Item_container_calculator_input'
       ) {
         const svg = item.querySelector('#svgArrow') as HTMLElement;
-        degrees += 180;
+        degrees += degreeChange;
         svg.style.transform = `rotate(${degrees}deg)`;
         toggleItem.classList.toggle('disabled');
       }

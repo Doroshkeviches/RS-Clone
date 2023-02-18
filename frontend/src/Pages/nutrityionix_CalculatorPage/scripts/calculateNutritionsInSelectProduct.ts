@@ -1,36 +1,26 @@
 import { calculateTotalNutritions } from './calculateTotalNutritions';
 import { removeTotalContainerItem } from './removeTotalContainerItem';
 import { ucFirst } from './ucFirst';
+import { calculateNutritions } from './calculateHelper';
 export function calculateNutritionsInSelectProduct(
   container: HTMLElement,
   weight: number
 ) {
-  const calculateWeight = 100;
   const foodName = (
     container.querySelector('#containerItemFoodName') as HTMLElement
   ).innerHTML;
-  const foodKcal = (
-    (+(container.querySelector('#containerItemKcal') as HTMLElement).innerHTML *
-      weight) /
-    calculateWeight
-  ).toFixed(2);
-  const foodProtein = (
-    (+(container.querySelector('#containerItemProtein') as HTMLElement)
-      .innerHTML *
-      weight) /
-    calculateWeight
-  ).toFixed(2);
-  const foodFat = (
-    (+(container.querySelector('#containerItemFat') as HTMLElement).innerHTML *
-      weight) /
-    calculateWeight
-  ).toFixed(2);
-  const foodCarbohydrate = (
-    (+(container.querySelector('#containerItemCarbohydrate') as HTMLElement)
-      .innerHTML *
-      weight) /
-    calculateWeight
-  ).toFixed(2);
+  const foodKcal = calculateNutritions('#containerItemKcal', container, weight);
+  const foodProtein = calculateNutritions(
+    '#containerItemProtein',
+    container,
+    weight
+  );
+  const foodFat = calculateNutritions('#containerItemFat', container, weight);
+  const foodCarbohydrate = calculateNutritions(
+    '#containerItemCarbohydrate',
+    container,
+    weight
+  );
   const totalContainer = document.getElementById(
     'total_container'
   ) as HTMLElement;

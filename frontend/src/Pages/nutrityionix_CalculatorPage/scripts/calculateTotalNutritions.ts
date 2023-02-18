@@ -1,9 +1,9 @@
 import { changeKcalProgress } from './changeKcalProgress';
 export function calculateTotalNutritions(
-  kcal: string,
-  protein: string,
-  fat: string,
-  carbohydrate: string
+  kcal: number,
+  protein: number,
+  fat: number,
+  carbohydrate: number
 ) {
   const calculatorFooterTextKcal = document.getElementById(
     'calculator_footer_text_kcal'
