@@ -1,0 +1,75 @@
+.container
+  max-width: 1200px
+  padding: 0 10px
+  margin: 0 auto
+
+.main__menu-nagigation
+  margin-top: 18px
+  gap: 20px
+  @include flex(flex, center, center)
+
+.main__manu-navigation--btn
+  height: 57px
+  width: 172px
+  @include flex(flex, center, center)
+
+.active__worckout-btn,
+.main__manu-navigation--btn:hover
+  background-color: $color-white
+  color: $color-lightorange
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.03)
+  border-radius: 8px
+  @include transition(0.3s)
+
+.main__menu-workout
+  display: flex
+  flex-direction: column
+  gap: 20px
+
+.menu-workout__list
+  @include flex(flex, justifi-content, center)
+  flex-wrap: wrap
+  gap: 20px
+
+.menu-workout__item
+  width: 280px
+  height: 224px
+  background-color: $color-white
+  border-radius: 8px
+
+.menu-workout__item_link
+  height: 100%
+  display: block
+
+.main__menu-workout
+  margin-top: 66px
+
+.plus
+  top: 40%
+  left: 50%
+  background: $color-black
+  height: 46px
+  width: 2px
+  position: relative
+
+  &:after
+    content: ""
+    height: 2px
+    width: 46px
+    background: $color-black
+    position: absolute
+    left: -22px
+    top: 22px
+
+.menu-workout-title
+  margin-top: 20px
+  margin-left: 24px
+  font-weight: $font-weight-small
+  font-size: $font-size-small
+  color: $color-black
+
+.workout__item-img
+  width: 280px
+  height: 162px
+  border-top-left-radius: 8px
+  border-top-right-radius: 8px
