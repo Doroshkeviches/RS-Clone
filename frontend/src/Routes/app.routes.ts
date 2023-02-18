@@ -21,5 +21,5 @@ export const appRoutes: routesObj[] = [
   },
   { path: '', component: autorizationTemplate },
   { path: 'Calculator', component: nutritionCalculator.template },
-  { path: 'Goal', component: goalPageTemplate },
+  { path: 'Goals', component: goalPageTemplate },
 ];

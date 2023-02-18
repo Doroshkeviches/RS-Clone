@@ -22,7 +22,7 @@ export function initPage(url: string) {
     case 'Calculator':
       renderNutritionixPage();
       break;
-    case 'Goal':
+    case 'Goals':
       renderGoalPage();
       break;
   }
