@@ -1,4 +1,5 @@
 import { registrationPageInit } from './registrationPage/scripts';
+import { renderNutritionixPage } from './nutrityionix_CalculatorPage';
 
 export function initPage(url: string) {
   const header = document.querySelector('header') as HTMLElement;
@@ -9,5 +10,7 @@ export function initPage(url: string) {
       header.style.display = 'none';
       registrationPageInit();
       break;
+    case 'Calculator':
+      renderNutritionixPage();
   }
 }
