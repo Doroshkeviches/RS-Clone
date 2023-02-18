@@ -1,28 +1,3 @@
-.menu-workout__item_link
-  height: 100%
-  display: block
-
-.main__menu-workout
-  margin-top: 66px
-
-.menu-workout-title
-  margin-top: 20px
-  margin-left: 24px
-  font-weight: 400
-  font-size: 16px
-  color: $color-black
-
-.workout__item-img
-  width: 280px
-  height: 162px
-  border-top-left-radius: 8px
-  border-top-right-radius: 8px
-
-.container // deleted after merge
-  max-width: 1200px
-  padding: 0 10px
-  margin: 0 auto
-
 .workout
   margin-top: 5px
   @include flex(flex, space-between, start)
@@ -55,8 +30,8 @@
   height: 68px
   padding: 0 24px
   color: $color-black
-  font-weight: 600
-  font-size: 20px
+  font-weight: $font-weight-large
+  font-size: 20px //only used once
   line-height: 140%
   @include flex(flex, space-between, center)
 
@@ -83,7 +58,7 @@
   width: 180px
   height: 54px
   border-radius: 8px
-  font-weight: 600
+  font-weight: $font-weight-large
   color: $color-white
   cursor: pointer
 
@@ -115,20 +90,20 @@
 
 .workout-description
   padding: 12px 35px 37px
-  font-weight: 400
-  font-size: 16px
+  font-weight: $font-weight-small
+  font-size: $font-size-small
   color: #313131
   max-height: 410px
   overflow: hidden
 
 .timer__time
-  font-weight: 600
-  font-size: 36px
+  font-weight: $font-weight-large
+  font-size: $font-size-large
   color: $color-black
 
 .timer-cell
   text-align: center
-  font-weight: 400
-  font-size: 16px
+  font-weight: $font-weight-small
+  font-size: $font-size-small
   color: #313131
   order: 1

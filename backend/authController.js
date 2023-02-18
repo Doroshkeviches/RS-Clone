@@ -143,8 +143,12 @@ class authController {
       Musclse: exerciseObj['Primary Muscles'],
       Type: exerciseObj.Type,
       Img: `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`,
-      equipment: descriptionApiResponse.equipment,
-      description: descriptionApiResponse.instructions,
+      equipment: descriptionApiResponse
+        ? descriptionApiResponse.equipment
+        : '',
+      description: descriptionApiResponse
+        ? descriptionApiResponse.instructions
+        : '',
     };
     res.json(objExercise);
   }
@@ -170,8 +174,12 @@ class authController {
           Musclse: exercise['Primary Muscles'],
           Type: exercise.Type,
           Img: `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`,
-          equipment: descriptionApiResponse.equipment,
-          description: descriptionApiResponse.instructions,
+          equipment: descriptionApiResponse
+            ? descriptionApiResponse.equipment
+            : '',
+          description: descriptionApiResponse
+            ? descriptionApiResponse.instructions
+            : '',
         };
         if (!nameArr.includes(exercise.name)) {
           nameArr.push(exercise.Name);
