@@ -15,6 +15,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use('/auth', authRouter);
+mongoose.set('strictQuery', false);
 
 const start = async () => {
   try {
@@ -23,7 +24,7 @@ const start = async () => {
     );
     app.listen(PORT, () => console.log(`server start on port ${PORT}`));
   } catch (e) {
-    // TODO
+    console.error(e);
   }
 };
 start();

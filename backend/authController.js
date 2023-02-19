@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const { validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
 const { secret } = require('./config');
+const workoutHelpers = require('./workout.helpers');
 
 function generateAccessToken(id, roles) {
   const payload = {
@@ -87,6 +88,104 @@ class authController {
     } catch (e) {
       console.error;
     }
+  }
+  async createExerciseList(req, res) {
+    const options = workoutHelpers.workoutHelpers.options;
+    const arrayMuscule = [];
+    const nameArr = [];
+    const muscule = await fetch(
+      `${workoutHelpers.workoutHelpers.exerciseApi}muscles/`,
+      options
+    );
+    const dataMuscule = await muscule.json();
+    for (let i = 0; i < 5 /*switch to dataMusculeNum*/; i++) {
+      const exercise = await fetch(
+        `${workoutHelpers.workoutHelpers.exerciseApi}?primaryMuscle=${dataMuscule[i]}`,
+        options
+      );
+      const dataExercise = await exercise.json();
+      arrayMuscule.push(...dataExercise);
+    }
+    const resultArray = await Promise.all(
+      arrayMuscule.map(async (exercise) => {
+        const videoId = workoutHelpers.workoutHelpers.createVideoId(
+          exercise['Youtube link']
+        );
+        const objExercise = {
+          name: exercise.Name,
+          img: `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`,
+        };
+        if (!nameArr.includes(exercise.name)) {
+          nameArr.push(exercise.Name);
+          return objExercise;
+        }
+      })
+    );
+    res.json(resultArray);
+  }
+  async createExercise(req, res) {
+    const options = workoutHelpers.workoutHelpers.options;
+    const nameExercise = req.params.name;
+    const descriptionApiResponse =
+      await workoutHelpers.workoutHelpers.createDescription(nameExercise);
+    const exercisePromise = await fetch(
+      `${workoutHelpers.workoutHelpers.exerciseApi}?name=${nameExercise}`,
+      options
+    );
+    const exercise = await exercisePromise.json();
+    const exerciseObj = exercise[0];
+    const videoId = workoutHelpers.workoutHelpers.createVideoId(
+      exerciseObj['Youtube link']
+    );
+    const objExercise = {
+      name: exerciseObj.Name,
+      YouTube: exerciseObj['Youtube link'],
+      Musclse: exerciseObj['Primary Muscles'],
+      Type: exerciseObj.Type,
+      Img: `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`,
+      equipment: descriptionApiResponse ? descriptionApiResponse.equipment : '',
+      description: descriptionApiResponse
+        ? descriptionApiResponse.instructions
+        : '',
+    };
+    res.json(objExercise);
+  }
+  async createWockout(req, res) {
+    const options = workoutHelpers.workoutHelpers.options;
+    const nameArr = [];
+    const worckoutName = req.params.name;
+    const exercise = await fetch(
+      `${workoutHelpers.workoutHelpers.exerciseApi}?primaryMuscle=${worckoutName}`,
+      options
+    );
+    const dataExercise = await exercise.json();
+    const resultArray = await Promise.all(
+      dataExercise.map(async (exercise) => {
+        const videoId = workoutHelpers.workoutHelpers.createVideoId(
+          exercise['Youtube link']
+        );
+        const descriptionApiResponse =
+          await workoutHelpers.workoutHelpers.createDescription(exercise.Name);
+        const objExercise = {
+          name: exercise.Name,
+          YouTube: exercise['Youtube link'],
+          Musclse: exercise['Primary Muscles'],
+          Type: exercise.Type,
+          Img: `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`,
+          equipment: descriptionApiResponse
+            ? descriptionApiResponse.equipment
+            : '',
+          description: descriptionApiResponse
+            ? descriptionApiResponse.instructions
+            : '',
+        };
+        if (!nameArr.includes(exercise.name)) {
+          nameArr.push(exercise.Name);
+          return objExercise;
+        }
+      })
+    );
+    res.json(resultArray);
   }
 }
 module.exports = new authController();
