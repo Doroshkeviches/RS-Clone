@@ -28,7 +28,7 @@ export function updateUser(
     .then(() => {
       const currentUrl = window.location.href;
       if (currentUrl === localUrl) {
-        window.location.href = `${currentUrl}#Calculator`; //TODO Change Calculator to  Workout
+        window.location.href = `${currentUrl}#Workout`;
       }
     });
 }
