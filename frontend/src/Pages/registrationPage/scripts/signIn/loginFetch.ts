@@ -1,5 +1,6 @@
 import { url } from '../../../../constants';
 export function login(username: string, password: string) {
+  const localUrl = 'http://localhost:8080/';
   const message = document.getElementById('message') as HTMLElement;
   fetch(url + `login`, {
     method: 'POST',
@@ -17,7 +18,10 @@ export function login(username: string, password: string) {
       if (!data.token) {
         message.innerHTML = data.message;
       } else {
-        //TODO перенаправление на след. страницу
+        const currentUrl = window.location.href;
+        if (currentUrl === localUrl) {
+          window.location.href = `${currentUrl}#Calculator`; //TODO Change Calculator to  Workout
+        }
       }
     });
 }

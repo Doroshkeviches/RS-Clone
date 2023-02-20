@@ -81,10 +81,14 @@ class authController {
       res.status(400).json({ message: 'Login failed' });
     }
   }
-  async getUsers(req, res) {
+  async getUser(req, res) {
     try {
-      const users = await User.find();
-      res.json(users);
+      const username = req.query.name;
+      const user = await User.findOne({ username })
+      if (!user) {
+        return res.status(404).json({ message: `User ${username} not found` });
+      }
+      res.json(user);
     } catch (e) {
       console.error;
     }

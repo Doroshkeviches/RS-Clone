@@ -8,6 +8,7 @@ export function updateUser(
   age: string,
   activity: string
 ) {
+  const localUrl = 'http://localhost:8080/';
   fetch(url + `updateUser`, {
     method: 'PUT',
     headers: {
@@ -25,7 +26,9 @@ export function updateUser(
   })
     .then((res) => res.json())
     .then(() => {
-      // const currentUrl = window.location.href;
-      // window.location.href = `${currentUrl}#Calculator`; TODO Change Calculator to  Workout
+      const currentUrl = window.location.href;
+      if (currentUrl === localUrl) {
+        window.location.href = `${currentUrl}#Calculator`; //TODO Change Calculator to  Workout
+      }
     });
 }
