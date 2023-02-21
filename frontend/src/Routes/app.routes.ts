@@ -12,7 +12,6 @@ export const appRoutes: routesObj[] = [
   { path: 'Exercises', component: WorkoutTemplate },
   { path: '404', component: NotFoundTemplate },
   { path: 'Workout/', component: singleWorkoutTemplate },
-  { path: '', component: autorizationTemplate },
   {
     path: 'Workout/',
     component: 'singleWorkoutTemplate' /*Switch to SingleWorkoutTemplate */,
@@ -21,6 +20,6 @@ export const appRoutes: routesObj[] = [
     path: 'Exercises/',
     component: 'singleExercisesTemplate' /*Switch to SingleExercisesTemplate */,
   },
-  { path: '', component: autorizationTemplate },
   { path: 'Calculator', component: nutritionCalculator.template },
+  { path: '', component: autorizationTemplate },
 ];
