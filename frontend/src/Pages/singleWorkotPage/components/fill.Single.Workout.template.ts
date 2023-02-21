@@ -87,6 +87,9 @@ export async function fillSingleWorkout() {
     switchExerciseItem(exerciseList, FIRST_EXERCISE);
     timerPanel.textContent = countAlltime();
   });
+  window.addEventListener('hashchange', () => {
+    clearInterval(timer);
+  });
   switchExerciseItem(exerciseList, FIRST_EXERCISE);
 }
 
