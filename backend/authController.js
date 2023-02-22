@@ -191,5 +191,17 @@ class authController {
     );
     res.json(resultArray);
   }
+  async createMyWorkout(req,res){
+    try {
+      const {username, workout} = req.body
+      const user = await User.findOne({ username })
+      console.log(typeof workout)
+      user.workout = workout
+      await user.save();
+      return res.json({message: `Done`,});
+    } catch (e) {
+      res.status(400).json({ message: 'Error' });
+    }
+  }
 }
 module.exports = new authController();

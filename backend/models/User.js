@@ -9,5 +9,6 @@ const User = new Schema({
   weight: { type: Number },
   height: { type: Number },
   age: { type: Number },
+  workout: []
 });
 module.exports = model('User', User);
