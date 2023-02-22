@@ -32,9 +32,9 @@ const workoutHelpers = {
         }
       );
       const response = await descPromis.json();
-      return response[0];
+      return response[0] || {};
     } catch {
-      return '';
+      return {};
     }
   },
   exerciseApi: 'https://exerciseapi3.p.rapidapi.com/search/',
