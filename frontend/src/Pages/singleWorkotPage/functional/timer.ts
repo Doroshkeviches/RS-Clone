@@ -24,17 +24,17 @@ export function createTimer(exerciseList: workoutObj[]) {
 }
 
 function creteExerciseTimer(exerciseList: workoutObj[]) {
-  const ExerciseActiveNum = countTimerLineActive();
+  const exerciseActiveNum = countTimerLineActive();
   const exerciseTimer = document.querySelectorAll(
     '.exercise__item_timer'
   ) as NodeListOf<HTMLElement>;
   const timerLine = document.querySelectorAll('.timer__line-filling')[
-    ExerciseActiveNum
+    exerciseActiveNum
   ] as HTMLElement;
   const timeArray = (
-    exerciseTimer[ExerciseActiveNum].textContent as string
+    exerciseTimer[exerciseActiveNum].textContent as string
   ).split(':');
-  const activeTimeArray = exerciseList[ExerciseActiveNum].time.split(':');
+  const activeTimeArray = exerciseList[exerciseActiveNum].time.split(':');
   const activeTimeToSecond =
     (+activeTimeArray[0] * TIME_DIVIDER + +activeTimeArray[1]) * TIME_DIVIDER +
     +activeTimeArray[2];
@@ -46,7 +46,7 @@ function creteExerciseTimer(exerciseList: workoutObj[]) {
     const hour = new Date(timeToSecond * SECOND_TO_MILISECOND).getUTCHours();
     const minutes = new Date(timeToSecond * SECOND_TO_MILISECOND).getMinutes();
     const second = new Date(timeToSecond * SECOND_TO_MILISECOND).getSeconds();
-    exerciseTimer[ExerciseActiveNum].textContent = `${
+    exerciseTimer[exerciseActiveNum].textContent = `${
       hour >= TWO_DIGIT_NUM ? hour : '0' + hour
     }:${minutes >= TWO_DIGIT_NUM ? minutes : '0' + minutes}:${
       second >= TWO_DIGIT_NUM ? second : '0' + second
@@ -56,7 +56,7 @@ function creteExerciseTimer(exerciseList: workoutObj[]) {
       Math.round((timeToSecond * FULL_PRECENT) / activeTimeToSecond)
     }%`;
     if (timeToSecond === 0) {
-      switchExerciseItem(exerciseList, ExerciseActiveNum + 1);
+      switchExerciseItem(exerciseList, exerciseActiveNum + 1);
     }
   }
 }

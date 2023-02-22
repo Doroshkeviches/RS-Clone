@@ -151,7 +151,7 @@ class authController {
       description: descriptionApiResponse
         ? descriptionApiResponse.instructions
         : '',
-      time: '00:05:00',
+      time: workoutHelpers.workoutHelpers.workoutTime,
     };
     res.json(objExercise);
   }
@@ -184,7 +184,7 @@ class authController {
           description: descriptionApiResponse
             ? descriptionApiResponse.instructions
             : '',
-          time: '00:05:00',
+          time: workoutHelpers.workoutHelpers.workoutTime,
         };
         if (!nameArr.includes(exercise.name)) {
           nameArr.push(exercise.Name);

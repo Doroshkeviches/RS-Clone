@@ -10,6 +10,7 @@ import { workoutObj } from '../functional/interface';
 import { switchExerciseItem } from '../functional/switchActiveExercise';
 import { createTimer } from '../functional/timer';
 import { createExerciseItem } from './single.Workout.template';
+const TIMER_COUNTER_USED = 1;
 
 export async function fillSingleWorkout() {
   const preLoader = document.querySelector(
@@ -54,7 +55,7 @@ export async function fillSingleWorkout() {
     congratulation.style.display = 'none';
   });
   startTimerBtn.addEventListener('click', () => {
-    if (TIMER_COUNTER < 1) {
+    if (TIMER_COUNTER !== TIMER_COUNTER_USED) {
       timer = setInterval(() => {
         createTimer(exerciseList);
         const time = (document.querySelector('.timer__time') as HTMLElement)
@@ -68,13 +69,13 @@ export async function fillSingleWorkout() {
     }
   });
   pauseTimerBtn.addEventListener('click', () => {
-    if (TIMER_COUNTER === 1) {
+    if (TIMER_COUNTER === TIMER_COUNTER_USED) {
       TIMER_COUNTER--;
     }
     clearInterval(timer);
   });
   stopTimerBtn.addEventListener('click', () => {
-    if (TIMER_COUNTER === 1) {
+    if (TIMER_COUNTER === TIMER_COUNTER_USED) {
       TIMER_COUNTER--;
     }
     timerPanel.textContent = countAlltime();

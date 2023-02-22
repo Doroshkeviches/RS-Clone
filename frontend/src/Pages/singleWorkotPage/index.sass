@@ -51,7 +51,7 @@ b
   padding: 0 24px
   color: $color-black
   font-weight: $font-weight-large
-  font-size: 20px //only used once
+  font-size: $font-size-average
   line-height: 140%
   @include flex(flex, space-between, center)
 
@@ -108,7 +108,7 @@ b
 
 .single-workout--title
   margin: 37px 35px 0
-  font-size: 20px
+  font-size: $font-size-average
   color: $color-black
   font-weight: $font-weight-large
 
@@ -143,14 +143,14 @@ b
   text-align: center
   font-weight: $font-weight-small
   font-size: $font-size-small
-  color: #313131
+  color: $color-dark-gray
   order: 1
 
 .congratulation__wraper
   position: absolute
   width: 100%
-  height: 87.3%
-  background-color: rgba(0, 0, 0, .6)
+  height: 87%
+  background-color: $color-background-dimming
   @include flex(flex, center, center)
   z-index: 2
   display: none

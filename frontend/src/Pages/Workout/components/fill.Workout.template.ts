@@ -1,7 +1,7 @@
 import {
   createCellTemplate,
   linksToNewWorckoutTemplate,
-} from './Worckout.templates';
+} from './Workout.templates';
 import { WorkoutList } from './trainMass';
 import { trainObj } from './interface';
 import { url } from '../../../constants';

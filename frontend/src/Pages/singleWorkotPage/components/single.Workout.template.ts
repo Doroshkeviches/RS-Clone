@@ -15,13 +15,13 @@ export const singleWorkoutTemplate = `
           </ul>
           <div class="timer__btn-list">
             <button class="timer__start timer__btn btn">${i18n.t(
-              'workout.Start'
+              'workout.start'
             )}</button>
             <button class="timer__pause timer__btn btn">${i18n.t(
-              'workout.Pause'
+              'workout.pause'
             )}</button>
             <button class="timer__stop timer__btn btn">${i18n.t(
-              'workout.Reset'
+              'workout.reset'
             )}</button>
           </div>
         </div>
@@ -63,24 +63,24 @@ export function createWorkoutLinkTemplate(workout: workoutObj) {
     <p class="workout-description">
       ${
         workout.Musclse
-          ? `<b>${i18n.t('workout.Muscle')}</b>: ${workout.Musclse}<br><br>`
+          ? `<b>${i18n.t('workout.muscle')}</b>: ${workout.Musclse}<br><br>`
           : ''
       }
       ${
         workout.equipment
-          ? `<b>${i18n.t('workout.Equiment')}</b>: ${workout.equipment}<br><br>`
+          ? `<b>${i18n.t('workout.equiment')}</b>: ${workout.equipment}<br><br>`
           : ''
       }
       ${
         workout.description
-          ? `<b>${i18n.t('workout.Description')}</b>: ${
+          ? `<b>${i18n.t('workout.description')}</b>: ${
               workout.description
             }<br><br>`
           : ''
       }
       ${
         workout.Type
-          ? `<b>${i18n.t('workout.Type')}</b>: ${workout.Type}<br><br>`
+          ? `<b>${i18n.t('workout.type')}</b>: ${workout.Type}<br><br>`
           : ''
       }
     </p>

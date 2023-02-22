@@ -2,7 +2,7 @@ import { routesObj } from './Routes.interface';
 import { autorizationTemplate } from '../Pages/registrationPage/registration.template';
 import { NotFoundTemplate } from '../Pages/404/errorTemplate';
 import { nutritionCalculator } from '../Pages/nutrityionix_CalculatorPage/scripts/nutritionContainer.template';
-import { WorkoutTemplate } from '../Pages/Workout/components/Worckout.templates';
+import { WorkoutTemplate } from '../Pages/Workout/components/Workout.templates';
 import { goalPageTemplate } from '../Pages/goalsPage/scripts/goalPage.template';
 import { profileTemplate } from '../Pages/profilePage/scripts/profilePage.template';
 import { singleWorkoutTemplate } from '../Pages/singleWorkotPage/components/single.Workout.template';
