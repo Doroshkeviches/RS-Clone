@@ -35,6 +35,15 @@ export default {
     },
     workout: {
       exercises: 'Упражнения',
+      start: 'Начать',
+      pause: 'Перерыв',
+      reset: 'Начать сначала',
+      left: 'Оставшееся время',
+      muscle: 'Задействованные мышцы',
+      equiment: 'Оборудование',
+      description: 'Описание',
+      type: 'Тип тренировки',
+      congratulation: 'Поздравляем, вы это сделали!!!',
     },
   },
 };

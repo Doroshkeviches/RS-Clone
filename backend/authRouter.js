@@ -19,7 +19,7 @@ router.post(
   controller.registration
 );
 router.post('/login', controller.login);
-router.get('/users', roleMiddleware(['ADMIN']), controller.getUsers);
+router.get('/searchUser',controller.getUser);
 router.put('/updateUser', controller.changeValue);
 router.get('/exercisesList', controller.createExerciseList);
 router.get('/exercises/:name', controller.createExercise);

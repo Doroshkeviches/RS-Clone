@@ -81,10 +81,14 @@ class authController {
       res.status(400).json({ message: 'Login failed' });
     }
   }
-  async getUsers(req, res) {
+  async getUser(req, res) {
     try {
-      const users = await User.find();
-      res.json(users);
+      const username = req.query.name;
+      const user = await User.findOne({ username })
+      if (!user) {
+        return res.status(404).json({ message: `User ${username} not found` });
+      }
+      res.json(user);
     } catch (e) {
       console.error;
     }
@@ -147,6 +151,7 @@ class authController {
       description: descriptionApiResponse
         ? descriptionApiResponse.instructions
         : '',
+      time: workoutHelpers.workoutHelpers.workoutTime,
     };
     res.json(objExercise);
   }
@@ -168,7 +173,8 @@ class authController {
           await workoutHelpers.workoutHelpers.createDescription(exercise.Name);
         const objExercise = {
           name: exercise.Name,
-          YouTube: exercise['Youtube link'],
+          YouTube: workoutHelpers.workoutHelpers.createVideoId(
+            exercise['Youtube link']),
           Musclse: exercise['Primary Muscles'],
           Type: exercise.Type,
           Img: `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`,
@@ -178,6 +184,7 @@ class authController {
           description: descriptionApiResponse
             ? descriptionApiResponse.instructions
             : '',
+          time: workoutHelpers.workoutHelpers.workoutTime,
         };
         if (!nameArr.includes(exercise.name)) {
           nameArr.push(exercise.Name);

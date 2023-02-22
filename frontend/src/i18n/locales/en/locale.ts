@@ -35,6 +35,15 @@ export default {
     },
     workout: {
       exercises: 'Exercises',
+      start: 'Start',
+      pause: 'Pause',
+      reset: 'Reset',
+      left: 'Time Left',
+      muscle: 'Muscle',
+      equiment: 'Equiment',
+      description: 'Description',
+      type: 'Workout Type',
+      congratulation: 'Congratulations you did it!!!',
     },
   },
 };

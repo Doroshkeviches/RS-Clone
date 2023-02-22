@@ -38,6 +38,7 @@ const workoutHelpers = {
     }
   },
   exerciseApi: 'https://exerciseapi3.p.rapidapi.com/search/',
+  workoutTime: '00:05:00'
 };
 
 exports.workoutHelpers = workoutHelpers;
