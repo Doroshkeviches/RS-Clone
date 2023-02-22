@@ -1,7 +1,7 @@
 import {
   createCellTemplate,
   linksToNewWorckoutTemplate,
-} from './Worckout.templates';
+} from './Workout.templates';
 import { WorkoutList } from './trainMass';
 import { trainObj } from './interface';
 import { url } from '../../../constants';
@@ -9,10 +9,15 @@ import { url } from '../../../constants';
 export async function fillWorckoutTemplate(
   sectionName: 'Workout' | 'Exercises'
 ) {
+  const preLoader = document.querySelector(
+    '.pre-loader__Wraper'
+  ) as HTMLElement;
+  preLoader.style.display = 'flex';
   const main = document.querySelector('.menu-workout__list') as HTMLElement;
   const btn = document.querySelector(`.${sectionName}`) as HTMLElement;
   btn.classList.add('active__worckout-btn');
   const trainingList = await createTrainList(sectionName);
+  preLoader.style.display = 'none';
   main.innerHTML = trainingList;
 }
 

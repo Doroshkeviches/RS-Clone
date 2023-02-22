@@ -151,6 +151,7 @@ class authController {
       description: descriptionApiResponse
         ? descriptionApiResponse.instructions
         : '',
+      time: workoutHelpers.workoutHelpers.workoutTime,
     };
     res.json(objExercise);
   }
@@ -172,7 +173,8 @@ class authController {
           await workoutHelpers.workoutHelpers.createDescription(exercise.Name);
         const objExercise = {
           name: exercise.Name,
-          YouTube: exercise['Youtube link'],
+          YouTube: workoutHelpers.workoutHelpers.createVideoId(
+            exercise['Youtube link']),
           Musclse: exercise['Primary Muscles'],
           Type: exercise.Type,
           Img: `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`,
@@ -182,6 +184,7 @@ class authController {
           description: descriptionApiResponse
             ? descriptionApiResponse.instructions
             : '',
+          time: workoutHelpers.workoutHelpers.workoutTime,
         };
         if (!nameArr.includes(exercise.name)) {
           nameArr.push(exercise.Name);

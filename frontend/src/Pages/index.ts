@@ -4,6 +4,8 @@ import { fillWorckoutTemplate } from './Workout/components/fill.Workout.template
 import { switchHeaderActive } from './header/switchActivePage';
 import { renderGoalPage } from './goalsPage';
 import { renderProfilePage } from './profilePage/scripts/renderProfilePage';
+import { fillSingleWorkout } from './singleWorkotPage/components/fill.Single.Workout.template';
+
 export function initPage(url: string) {
   const header = document.querySelector('header') as HTMLElement;
   header.style.display = 'block';
@@ -28,6 +30,9 @@ export function initPage(url: string) {
       break;
     case 'Profile':
       renderProfilePage();
+      break;
+    case 'Workout/':
+      fillSingleWorkout();
       break;
   }
 }
