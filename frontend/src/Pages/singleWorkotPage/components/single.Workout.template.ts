@@ -1,10 +1,9 @@
 import { workoutObj } from '../functional/interface';
 import i18n from 'i18next';
+import loaderTemplate from '../../Loader/loaderTemplate';
 
 export const singleWorkoutTemplate = `
-  <div class="pre-loader__Wraper">
-    <div class="loadingio-spinner-rolling-36lkopxd38s"><div class="ldio-877o781s6so"><div></div></div></div>
-  </div>
+  ${loaderTemplate}
   <div class="congratulation__wraper">
     <h4 class="congratulation__title">${i18n.t('workout.congratulation')}</h4>
   </div>
