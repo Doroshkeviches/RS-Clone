@@ -24,5 +24,11 @@ router.put('/updateUser', controller.changeValue);
 router.get('/exercisesList', controller.createExerciseList);
 router.get('/exercises/:name', controller.createExercise);
 router.get('/workout/:name', controller.createWockout);
+router.post('/createMyWorkout',controller.createMyWorkout );
+router.get('/userWorkout',controller.getWorkout );
+router.get('/userExercise',controller.getExercise );
+
+
+
 
 module.exports = router;

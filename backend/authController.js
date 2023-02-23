@@ -194,5 +194,36 @@ class authController {
     );
     res.json(resultArray);
   }
+  async createMyWorkout(req,res){
+    try {
+      const {username, workout} = req.body
+      const user = await User.findOne({ username })
+      user.workout = workout
+      await user.save();
+      return res.json({message: `Done`,});
+    } catch (e) {
+      res.status(400).json({ message: 'Error' });
+    }
+  }
+  async getWorkout(req,res){
+    try {
+      const username = req.query.name
+      const user = await User.findOne({ username })
+      res.json(user.workout);
+    } catch (e) {
+      res.status(400).json({ message: 'Error' });
+    }
+  }
+  async getExercise(req,res){
+    try {
+      const username = req.query.name
+      const wokrout = req.query.wokrout
+      const user = await User.findOne({ username })
+      const exercise = user.workout.find(item => item.name === wokrout)
+      res.json(exercise);
+    } catch (e) {
+      res.status(400).json({ message: 'Error' });
+    }
+  }
 }
 module.exports = new authController();
