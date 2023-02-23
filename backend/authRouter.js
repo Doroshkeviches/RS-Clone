@@ -25,8 +25,8 @@ router.get('/exercisesList', controller.createExerciseList);
 router.get('/exercises/:name', controller.createExercise);
 router.get('/workout/:name', controller.createWockout);
 router.put('/createMyWorkout',controller.createMyWorkout );
-router.get('/getWorkout',controller.getWorkout );
-router.get('/getExercise',controller.getExercise );
+router.get('/userWorkout',controller.getWorkout );
+router.get('/userExercise',controller.getExercise );
 
 
 
