@@ -5,19 +5,17 @@ import {
 import { WorkoutList } from './trainMass';
 import { trainObj } from './interface';
 import { url } from '../../../constants';
+import { Loader } from '../../../helpers';
 
 export async function fillWorckoutTemplate(
   sectionName: 'Workout' | 'Exercises'
 ) {
-  const preLoader = document.querySelector(
-    '.pre-loader__Wraper'
-  ) as HTMLElement;
-  preLoader.style.display = 'flex';
+  Loader.showLoader();
   const main = document.querySelector('.menu-workout__list') as HTMLElement;
   const btn = document.querySelector(`.${sectionName}`) as HTMLElement;
   btn.classList.add('active__worckout-btn');
   const trainingList = await createTrainList(sectionName);
-  preLoader.style.display = 'none';
+  Loader.hideLoader();
   main.innerHTML = trainingList;
 }
 

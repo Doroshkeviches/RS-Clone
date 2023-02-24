@@ -33,6 +33,13 @@ export default {
         activity: 'Trains per week ( 2 )',
       },
     },
+    exercise: {
+      btnAddToWorkout: 'Add to training',
+      fetchError: {
+        name: `Something went wrong! Couldn't fetch exercise's name!`,
+        description: `Something went wrong! Couldn't fetch exercise's description!`,
+      },
+    },
     workout: {
       exercises: 'Exercises',
       start: 'Start',
