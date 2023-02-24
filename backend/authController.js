@@ -140,13 +140,13 @@ class authController {
     const exercise = await exercisePromise.json();
     const exerciseObj = exercise[0] || {};
 
-    if (!(!!exerciseObj?.['Name'] || !!descriptionApiResponse?.['name'])) {
+    if (!(exerciseObj?.['Name'] || descriptionApiResponse?.['name'])) {
       res.status(404).json({});
       return;
     }
 
     const getImg = (exerciseObj) => {
-      if (!!exerciseObj?.['Youtube link']) {
+      if (exerciseObj?.['Youtube link']) {
         const videoId = workoutHelpers.workoutHelpers.createVideoId(exerciseObj['Youtube link']);
         return `https://img.youtube.com/vi/${videoId}mqdefault.jpg`;
       }
@@ -155,11 +155,11 @@ class authController {
     }
 
     const getMuscle = (exerciseObj, descriptionApiResponse) => {
-      if (!!exerciseObj?.['Primary Muscles']) {
+      if (exerciseObj?.['Primary Muscles']) {
         return exerciseObj['Primary Muscles'];
       }
 
-      if (!!descriptionApiResponse?.['muscule']) {
+      if (descriptionApiResponse?.['muscule']) {
         return [descriptionApiResponse.muscule];
       }
 
