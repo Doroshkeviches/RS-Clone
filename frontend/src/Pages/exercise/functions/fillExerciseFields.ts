@@ -1,3 +1,4 @@
+import i18n from 'i18next';
 import { exerciseRespnose } from './../serverResponseInterface';
 
 function createExerciseInfoListItem(
@@ -28,8 +29,7 @@ export default async function fillExerciseFields(
   )[0] as HTMLElement;
 
   if (exerciseTitle) {
-    exerciseTitle.innerText =
-      data.name || `Something went wrong! Couldn't fetch exercise's name!`;
+    exerciseTitle.innerText = data.name || i18n.t('exercise.fetchError.name');
   }
 
   const exerciseDescription = document.getElementsByClassName(
@@ -38,8 +38,7 @@ export default async function fillExerciseFields(
 
   if (exerciseDescription) {
     exerciseDescription.innerText =
-      data.description ||
-      `Something went wrong! Couldn't fetch exercise's description!`;
+      data.description || i18n.t('exercise.fetchError.description');
   }
 
   const exerciseInfo = document.getElementsByClassName(

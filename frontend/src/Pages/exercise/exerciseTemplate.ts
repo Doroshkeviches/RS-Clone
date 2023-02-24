@@ -1,3 +1,4 @@
+import i18n from 'i18next';
 import loaderTemplate from '../Loader/loaderTemplate';
 
 export const exerciseTemplate = `
@@ -11,11 +12,11 @@ export const exerciseTemplate = `
           <h2 class="exercise__title">
           </h2>
           <div class="exercise__info-list">
-            <h2>
-            </h2>
           </div>
         </div>
-        <button class="exercise__btn-add-to-training btn">Add to training</button>
+        <button class="exercise__btn-add-to-training btn">${i18n.t(
+          'exercise.btnAddToWorkout'
+        )}</button>
       </div>
     </div>
     <div class="exercise__bottom">
