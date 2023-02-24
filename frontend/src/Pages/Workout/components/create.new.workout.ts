@@ -2,7 +2,6 @@ import { objWorkout } from './interface';
 import userImg from '../../../Assets/userImg.jpg';
 import { url } from '../../../constants';
 import { createCellTemplate } from './Workout.templates';
-import { addDeleteBtn, deleteUserWorkout } from './fill.Workout.template';
 
 export function createNewWorkout() {
   const popupWraper = document.querySelector(
@@ -81,4 +80,31 @@ export function addUserWorkout(workout: objWorkout) {
     await deleteUserWorkout(delBtn.previousElementSibling as HTMLElement);
   });
   workoutList.append(div.firstElementChild as HTMLElement);
+}
+
+export function addDeleteBtn(cell: string) {
+  const div = document.createElement('div') as HTMLElement;
+  div.innerHTML = cell;
+  const wraper = div.querySelector('.menu-workout__info') as HTMLElement;
+  const deletBtn = document.createElement('button');
+  deletBtn.classList.add('menu-workout__delete--btn');
+  wraper.append(deletBtn);
+  return div.innerHTML;
+}
+
+export async function deleteUserWorkout(deletCell: HTMLElement) {
+  const username = localStorage.getItem('username');
+  const workoutList = document.querySelector(
+    '.menu-workout__list'
+  ) as HTMLElement;
+  workoutList.removeChild(
+    ((deletCell.parentElement as HTMLElement).parentElement as HTMLElement)
+      .parentElement as HTMLElement
+  );
+  const response = await fetch(`${url}userWorkout/?name=${username}`);
+  const userWorkout = (await response.json()) as objWorkout[];
+  const afterDelWorkout = userWorkout.filter((el) => {
+    if (el.name !== (deletCell.textContent as string).trim()) return el;
+  });
+  saveUserWorkout(afterDelWorkout);
 }
