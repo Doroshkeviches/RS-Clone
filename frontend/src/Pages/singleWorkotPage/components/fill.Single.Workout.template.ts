@@ -9,8 +9,12 @@ import { createExerciseList } from '../functional/ExerciseList';
 import { workoutObj } from '../functional/interface';
 import { switchExerciseItem } from '../functional/switchActiveExercise';
 import { createTimer } from '../functional/timer';
-import { createExerciseItem } from './single.Workout.template';
+import {
+  createErrorWraper,
+  createExerciseItem,
+} from './single.Workout.template';
 const TIMER_COUNTER_USED = 1;
+const TIME_OVER = '00:00:00';
 
 export async function fillSingleWorkout() {
   const preLoader = document.querySelector(
@@ -41,63 +45,75 @@ export async function fillSingleWorkout() {
   const stopTimerBtn = document.querySelector(
     '.timer__stop'
   ) as HTMLButtonElement;
-  const exerciseList = createExerciseList(workoutInfo);
 
   let timer: NodeJS.Timer;
   let TIMER_COUNTER = 0;
-  exerciseListWraper.innerHTML = '';
-  exerciseList.forEach((el) => {
-    const exersice = createExerciseItem(el.name, el.time);
-    exerciseListWraper.innerHTML += exersice;
-  });
-  timerPanel.textContent = countAlltime();
-  congratulation.addEventListener('click', () => {
-    congratulation.style.display = 'none';
-  });
-  startTimerBtn.addEventListener('click', () => {
-    if (TIMER_COUNTER !== TIMER_COUNTER_USED) {
-      timer = setInterval(() => {
-        createTimer(exerciseList);
-        const time = (document.querySelector('.timer__time') as HTMLElement)
-          .textContent as string;
-        if (time === '00:00:00') {
-          congratulation.style.display = 'flex';
-          clearInterval(timer);
-        }
-      }, SECOND_TO_MILISECOND);
-      TIMER_COUNTER++;
-    }
-  });
-  pauseTimerBtn.addEventListener('click', () => {
-    if (TIMER_COUNTER === TIMER_COUNTER_USED) {
-      TIMER_COUNTER--;
-    }
-    clearInterval(timer);
-  });
-  stopTimerBtn.addEventListener('click', () => {
-    if (TIMER_COUNTER === TIMER_COUNTER_USED) {
-      TIMER_COUNTER--;
-    }
-    timerPanel.textContent = countAlltime();
-    clearInterval(timer);
-    exerciseListWraper.innerHTML = '';
+  if (workoutInfo.length === 0) {
+    createErrorWraper();
+  } else {
+    const exerciseList = createExerciseList(workoutInfo);
     exerciseList.forEach((el) => {
       const exersice = createExerciseItem(el.name, el.time);
       exerciseListWraper.innerHTML += exersice;
     });
-    switchExerciseItem(exerciseList, FIRST_EXERCISE);
     timerPanel.textContent = countAlltime();
-  });
+    congratulation.addEventListener('click', () => {
+      congratulation.style.display = 'none';
+    });
+    startTimerBtn.addEventListener('click', () => {
+      if (TIMER_COUNTER !== TIMER_COUNTER_USED) {
+        timer = setInterval(() => {
+          createTimer(exerciseList);
+          const time = (document.querySelector('.timer__time') as HTMLElement)
+            .textContent as string;
+          if (time === TIME_OVER) {
+            congratulation.style.display = 'flex';
+            clearInterval(timer);
+          }
+        }, SECOND_TO_MILISECOND);
+        TIMER_COUNTER++;
+      }
+    });
+    pauseTimerBtn.addEventListener('click', () => {
+      if (TIMER_COUNTER === TIMER_COUNTER_USED) {
+        TIMER_COUNTER--;
+      }
+      clearInterval(timer);
+    });
+    stopTimerBtn.addEventListener('click', () => {
+      if (TIMER_COUNTER === TIMER_COUNTER_USED) {
+        TIMER_COUNTER--;
+      }
+      timerPanel.textContent = countAlltime();
+      clearInterval(timer);
+      exerciseListWraper.innerHTML = '';
+      exerciseList.forEach((el) => {
+        const exersice = createExerciseItem(el.name, el.time);
+        exerciseListWraper.innerHTML += exersice;
+      });
+      switchExerciseItem(exerciseList, FIRST_EXERCISE);
+      timerPanel.textContent = countAlltime();
+    });
+    switchExerciseItem(exerciseList, FIRST_EXERCISE);
+  }
   window.addEventListener('hashchange', () => {
     clearInterval(timer);
   });
-  switchExerciseItem(exerciseList, FIRST_EXERCISE);
 }
 
 async function WorkoutRequest() {
   const workoutName = window.location.hash.slice(1).split('/')[1];
   try {
-    const response = await fetch(`${url}/workout/${workoutName}`);
+    let response: Response;
+    if (workoutName === 'userWorkout') {
+      const username = localStorage.getItem('username');
+      const workoutId = window.location.hash.slice(1).split('/')[2];
+      response = await fetch(
+        `${url}userExercise?name=${username}&workout=${workoutId}`
+      );
+    } else {
+      response = await fetch(`${url}/workout/${workoutName}`);
+    }
     const workoutInfo = (await response.json()) as workoutObj[];
     return workoutInfo;
   } catch (error) {

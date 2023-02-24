@@ -44,6 +44,9 @@
 .main__menu-workout
   margin-top: 66px
 
+.link-to-CreateWorckout
+  cursor: pointer
+
 .plus
   top: 40%
   left: 50%
@@ -62,7 +65,6 @@
     top: 22px
 
 .menu-workout-title
-  margin-top: 20px
   margin-left: 24px
   font-weight: $font-weight-small
   font-size: $font-size-small
@@ -73,3 +75,88 @@
   height: 162px
   border-top-left-radius: 8px
   border-top-right-radius: 8px
+
+.popup-workout__Wraper
+  position: absolute
+  background-color: $color-background-dimming
+  height: 100vh
+  width: 100vw
+  top: 0px
+  left: 0px
+  display: none
+
+.popup-workout
+  z-index: 2
+  width: 50%
+  position: absolute
+  top: 30%
+  left: 50%
+  transform: translate(-50%, -50%)
+  padding: 24px 36px
+  background-color: $color-white
+  border-radius: 8px
+
+.popup-workout__input
+  border: 1px solid black
+
+.popup-workout__title
+  margin-bottom: 16px
+  color: $color-black
+
+.popup-workout__summit-wraper
+  margin: 0 auto
+  display: flex
+  justify-content: flex-end
+
+.popup-workout__btn
+  padding: 16px 24px
+  background-color: $color-lightorange
+  color: $color-white
+  border-radius: 8px
+  cursor: pointer
+
+.popup-error
+  text-align: center
+  color: $color-saturatedred
+
+.menu-workout__info
+  @include flex(flex, space-between, center)
+  margin-top: 10px
+
+.menu-workout__delete--btn
+  cursor: pointer
+  position: relative
+  width: 20px
+  margin-right: 14px
+  background-color: $color-white
+  height: 20px
+
+.menu-workout__delete--btn:before, .menu-workout__delete--btn:after
+  content: ""
+  position: absolute
+  left: 0
+  width: 20px
+  height: 3px
+  background-color: $color-saturatedred
+
+.menu-workout__delete--btn:before
+  transform: rotate(45deg)
+
+.menu-workout__delete--btn:after
+  transform: rotate(-45deg)
+
+.no-exercise__wrap
+  background-color: $color-white
+  border-radius: 8px
+  @include flex(flex, space-between, center)
+  height: 120px
+
+.no-exercise__title
+  color: $color-red
+  padding-left: 15px
+  padding-right: 10px
+
+.no-exercise__link
+  color: $color-white
+  background-color: #bcbcbc
+  margin-right: 15px

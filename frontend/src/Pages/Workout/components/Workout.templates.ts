@@ -1,7 +1,21 @@
-import { trainObj } from './interface';
+import { objWorkout } from './interface';
 import i18n from 'i18next';
 
+const WorkoutPopupTemplate = `
+  <div class="popup-workout__Wraper">
+    <div class="popup-workout">
+      <h4 class="popup-workout__title">Create new Workout</h4>
+      <input type="text" class="popup-workout__input" placeholder="New Workout name" required>
+      <span class="popup-error"></span>
+      <div class="popup-workout__summit-wraper">
+        <button class="popup-workout__btn btn">Submit</button>
+      </div>
+    </div>
+  </div>
+`;
+
 export const WorkoutTemplate = `
+  ${WorkoutPopupTemplate}
   <div class="pre-loader__Wraper">
     <div class="loadingio-spinner-rolling-36lkopxd38s"><div class="ldio-877o781s6so"><div></div></div></div>
   </div>
@@ -22,23 +36,21 @@ export const WorkoutTemplate = `
 
 export const linksToNewWorckoutTemplate = `
   <li class="menu-workout__item">
-    <a href="#CreateNewWorckout" class="menu-workout__item_link link-to-CreateWorckout">
+    <div class="menu-workout__item_link link-to-CreateWorckout">
       <div class="plus"></div>
-    </a>
+    </div>
   </li>`;
 
-export function createCellTemplate(
-  list: trainObj[],
-  counter: number,
-  sectionName: 'Workout' | 'Exercises'
-) {
+export function createCellTemplate(workout: objWorkout, sectionName: string) {
   return `
   <li class="menu-workout__item">
-    <a href="#${sectionName}/${list[counter].name}" class="menu-workout__item_link">
-      <img src="${list[counter].img}" alt="workoutImg" class="workout__item-img">
-      <h2 class="menu-workout-title">
-        ${list[counter].name}
-      </h2>
+    <a href="#${sectionName}/${workout.name}" class="menu-workout__item_link">
+      <img src="${workout.img}" alt="workoutImg" class="workout__item-img">
+      <div class="menu-workout__info">
+        <h2 class="menu-workout-title">
+          ${workout.name}
+        </h2>
+      </div>
     </a>
   </li>`;
 }

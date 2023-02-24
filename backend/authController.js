@@ -217,10 +217,10 @@ class authController {
   async getExercise(req,res){
     try {
       const username = req.query.name
-      const wokrout = req.query.wokrout
+      const workout = req.query.workout
       const user = await User.findOne({ username })
-      const exercise = user.workout.find(item => item.name === wokrout)
-      res.json(exercise);
+      const exercise = user.workout.find(item => item.name === workout)
+      res.json(exercise.exercises);
     } catch (e) {
       res.status(400).json({ message: 'Error' });
     }
