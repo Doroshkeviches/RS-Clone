@@ -1,0 +1,84 @@
+.exercise.container {
+  min-width: 320px;
+  max-width: 1160px;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+
+.exercise__info-wrapper {
+  @include flex(flex, normal, start);
+  flex-direction: column;
+  flex-grow: 1;
+  padding-left: 1rem;
+}
+
+.exercise__top {
+  @include flex(flex, center, center);
+}
+
+.exercise__title {
+  color: $color-black;
+  font-size: $font-size-large;
+}
+
+.exercise__video {
+  @include sixteenNineRatio(480px);
+  margin-right: 120px;
+  border-radius: 8px;
+}
+
+.exercise__bottom {
+  @include flex(flex, center, center);
+  margin-top: 76px;
+}
+
+.exercise__info-lis {
+  @include flex(flex, center, center);
+}
+
+.exercise__top {
+  flex-direction: row;
+}
+
+.exercise__info-list {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 32px;
+
+  .info-list__item:not(:first-of-type) {
+    margin: 0 1rem 0;
+  }
+}
+
+.exercise__description {
+  font-weight: $font-weight-small;
+  color: $color-dark-gray;
+  font-size: $font-size-small;
+  line-height: 140%;
+}
+
+.exercise__btn-add-to-training {
+  margin-top: 32px;
+  width: 60%;
+  height: 54px;
+}
+
+.exercise__btn-add-to-training {
+  background: $color-lightorange;
+  color: $color-white;
+}
+
+.info-list__item-title {
+  color: $color-dark-gray;
+  font-size: $font-size-small;
+  font-weight: $font-weight-small;
+}
+
+.info-list__item-info {
+  margin-top: 8px;
+  color: $color-black;
+  font-weight: $font-weight-small;
+  font-size: $font-size-default;
+}

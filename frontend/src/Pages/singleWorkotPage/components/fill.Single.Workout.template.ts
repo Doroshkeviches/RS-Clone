@@ -5,6 +5,7 @@ import {
   TWO_DIGIT_NUM,
   url,
 } from '../../../constants';
+import { Loader } from '../../../helpers';
 import { createExerciseList } from '../functional/ExerciseList';
 import { workoutObj } from '../functional/interface';
 import { switchExerciseItem } from '../functional/switchActiveExercise';
@@ -17,12 +18,9 @@ const TIMER_COUNTER_USED = 1;
 const TIME_OVER = '00:00:00';
 
 export async function fillSingleWorkout() {
-  const preLoader = document.querySelector(
-    '.pre-loader__Wraper'
-  ) as HTMLElement;
   const workoutWraper = document.querySelector('.workout') as HTMLElement;
   workoutWraper.style.display = 'none';
-  preLoader.style.display = 'flex';
+  Loader.showLoader();
   const workoutInfo = (await WorkoutRequest()) as workoutObj[];
   const congratulation = document.querySelector(
     '.congratulation__wraper'
@@ -30,7 +28,7 @@ export async function fillSingleWorkout() {
   if (!workoutInfo) {
     window.location.hash = '404';
   }
-  preLoader.style.display = 'none';
+  Loader.hideLoader();
   workoutWraper.style.display = 'flex';
   const exerciseListWraper = document.querySelector(
     '.exercise__list'

@@ -132,25 +132,48 @@ class authController {
     const nameExercise = req.params.name;
     const descriptionApiResponse =
       await workoutHelpers.workoutHelpers.createDescription(nameExercise);
+
     const exercisePromise = await fetch(
       `${workoutHelpers.workoutHelpers.exerciseApi}?name=${nameExercise}`,
       options
     );
     const exercise = await exercisePromise.json();
-    const exerciseObj = exercise[0];
-    const videoId = workoutHelpers.workoutHelpers.createVideoId(
-      exerciseObj['Youtube link']
-    );
+    const exerciseObj = exercise[0] || {};
+
+    if (!(exerciseObj?.['Name'] || descriptionApiResponse?.['name'])) {
+      res.status(404).json({});
+      return;
+    }
+
+    const getImg = (exerciseObj) => {
+      if (exerciseObj?.['Youtube link']) {
+        const videoId = workoutHelpers.workoutHelpers.createVideoId(exerciseObj['Youtube link']);
+        return `https://img.youtube.com/vi/${videoId}mqdefault.jpg`;
+      }
+
+      return null;
+    }
+
+    const getMuscle = (exerciseObj, descriptionApiResponse) => {
+      if (exerciseObj?.['Primary Muscles']) {
+        return exerciseObj['Primary Muscles'];
+      }
+
+      if (descriptionApiResponse?.['muscule']) {
+        return [descriptionApiResponse.muscule];
+      }
+
+      return [];
+    }
+
     const objExercise = {
-      name: exerciseObj.Name,
-      YouTube: exerciseObj['Youtube link'],
-      Musclse: exerciseObj['Primary Muscles'],
-      Type: exerciseObj.Type,
-      Img: `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`,
-      equipment: descriptionApiResponse ? descriptionApiResponse.equipment : '',
-      description: descriptionApiResponse
-        ? descriptionApiResponse.instructions
-        : '',
+      name: descriptionApiResponse?.name || exerciseObj?.Name || null,
+      YouTube: exerciseObj?.['Youtube link'] || null,
+      Musclse: getMuscle(exerciseObj, descriptionApiResponse),
+      Type: exerciseObj?.Type || null,
+      Img: getImg(exerciseObj),
+      equipment: descriptionApiResponse?.equipment || null,
+      description: descriptionApiResponse?.instructions || null,
       time: workoutHelpers.workoutHelpers.workoutTime,
     };
     res.json(objExercise);

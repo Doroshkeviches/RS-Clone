@@ -33,6 +33,13 @@ export default {
         activity: 'Trains per week ( 2 )',
       },
     },
+    exercise: {
+      btnAddToWorkout: 'Add to training',
+      fetchError: {
+        name: `Something went wrong! Couldn't fetch exercise's name!`,
+        description: `Something went wrong! Couldn't fetch exercise's description!`,
+      },
+    },
     workout: {
       exercises: 'Exercises',
       start: 'Start',
@@ -44,6 +51,11 @@ export default {
       description: 'Description',
       type: 'Workout Type',
       congratulation: 'Congratulations you did it!!!',
+      createWorkout: 'Create new Workout',
+      submit: 'Submit',
+      noWorkout:
+        'There no exercises, go to exercise page and add selected ones to the workout',
+      toExercise: 'Go to exercise list',
     },
   },
 };

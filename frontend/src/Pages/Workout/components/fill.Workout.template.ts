@@ -5,20 +5,22 @@ import {
 import { createWorkoutArray } from './workout.array';
 import { objWorkout } from './interface';
 import { url } from '../../../constants';
-import { addDeleteBtn, createNewWorkout, deleteUserWorkout } from './create.new.workout';
+import { Loader } from '../../../helpers';
+import {
+  addDeleteBtn,
+  createNewWorkout,
+  deleteUserWorkout,
+} from './create.new.workout';
 
 export async function fillWorckoutTemplate(
   sectionName: 'Workout' | 'Exercises'
 ) {
-  const preLoader = document.querySelector(
-    '.pre-loader__Wraper'
-  ) as HTMLElement;
-  preLoader.style.display = 'flex';
+  Loader.showLoader();
   const main = document.querySelector('.menu-workout__list') as HTMLElement;
   const btn = document.querySelector(`.${sectionName}`) as HTMLElement;
   btn.classList.add('active__worckout-btn');
   const trainingList = await createWorkoutList(sectionName);
-  preLoader.style.display = 'none';
+  Loader.hideLoader();
   main.innerHTML = trainingList;
   if (sectionName === 'Workout') {
     const createNewWorkoutBtn = document.querySelector(

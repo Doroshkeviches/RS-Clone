@@ -9,3 +9,10 @@
 @mixin rectangle($prop1, $prop2)
   width: $prop1
   height: $prop2
+
+@mixin sixteenNineRatio($width)
+  width: $width
+  min-width: $width
+
+  height: calc(($width * 9) / 16)
+  min-height: calc(($width * 9) / 16)

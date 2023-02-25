@@ -1,10 +1,9 @@
 import { workoutObj } from '../functional/interface';
 import i18n from 'i18next';
+import loaderTemplate from '../../Loader/loaderTemplate';
 
 export const singleWorkoutTemplate = `
-  <div class="pre-loader__Wraper">
-    <div class="loadingio-spinner-rolling-36lkopxd38s"><div class="ldio-877o781s6so"><div></div></div></div>
-  </div>
+  ${loaderTemplate}
   <div class="congratulation__wraper">
     <h4 class="congratulation__title">${i18n.t('workout.congratulation')}</h4>
   </div>
@@ -93,11 +92,10 @@ export function createErrorWraper() {
   const noExerciseItem = `
   <li class="no-exercise__wrap">
     <h3 class="no-exercise__title">
-      There no exercises, go to exercise page and add selected ones to the
-      workout
+      ${i18n.t('workout.noWorkout')}
     </h3>
     <a href="#Exercises" class="no-exercise__link btn">
-      Go to exercise list
+      ${i18n.t('workout.toExercise')}
     </a>
   </li>`;
   exerciseList.innerHTML = noExerciseItem;

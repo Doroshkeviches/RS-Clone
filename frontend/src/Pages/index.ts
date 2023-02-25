@@ -1,3 +1,4 @@
+import exerciseInit from './exercise/exerciseInit';
 import { registrationPageInit } from './registrationPage/scripts';
 import { renderNutritionixPage } from './nutrityionix_CalculatorPage';
 import { fillWorckoutTemplate } from './Workout/components/fill.Workout.template';
@@ -21,6 +22,9 @@ export function initPage(url: string) {
       break;
     case 'Exercises':
       fillWorckoutTemplate('Exercises');
+      break;
+    case 'Exercises/':
+      exerciseInit();
       break;
     case 'Calculator':
       renderNutritionixPage();

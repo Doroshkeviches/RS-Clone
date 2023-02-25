@@ -4,11 +4,13 @@ import i18n from 'i18next';
 const WorkoutPopupTemplate = `
   <div class="popup-workout__Wraper">
     <div class="popup-workout">
-      <h4 class="popup-workout__title">Create new Workout</h4>
+      <h4 class="popup-workout__title">${i18n.t('workout.createWorkout')}</h4>
       <input type="text" class="popup-workout__input" placeholder="New Workout name" required>
       <span class="popup-error"></span>
       <div class="popup-workout__summit-wraper">
-        <button class="popup-workout__btn btn">Submit</button>
+        <button class="popup-workout__btn btn">${i18n.t(
+          'workout.submit'
+        )}</button>
       </div>
     </div>
   </div>
@@ -16,9 +18,6 @@ const WorkoutPopupTemplate = `
 
 export const WorkoutTemplate = `
   ${WorkoutPopupTemplate}
-  <div class="pre-loader__Wraper">
-    <div class="loadingio-spinner-rolling-36lkopxd38s"><div class="ldio-877o781s6so"><div></div></div></div>
-  </div>
   <div class="container">
     <nav class="main__menu-nagigation">
       <a href="#Workout" class="main__manu-navigation--btn Workout">${i18n.t(
