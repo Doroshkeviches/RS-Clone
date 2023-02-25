@@ -85,3 +85,20 @@ export function createWorkoutLinkTemplate(workout: workoutObj) {
     </p>
   </a>`;
 }
+
+export function createErrorWraper() {
+  const exerciseList = document.querySelector('.exercise__list') as HTMLElement;
+  const timerPanel = document.querySelector('.timer__panel') as HTMLElement;
+  const noExerciseItem = `
+  <li class="no-exercise__wrap">
+    <h3 class="no-exercise__title">
+      ${i18n.t('workout.noWorkout')}
+    </h3>
+    <a href="#Exercises" class="no-exercise__link btn">
+      ${i18n.t('workout.toExercise')}
+    </a>
+  </li>`;
+  exerciseList.innerHTML = noExerciseItem;
+  exerciseList.style.overflowY = 'visible';
+  timerPanel.style.display = 'none';
+}

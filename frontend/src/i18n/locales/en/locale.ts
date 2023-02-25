@@ -51,6 +51,11 @@ export default {
       description: 'Description',
       type: 'Workout Type',
       congratulation: 'Congratulations you did it!!!',
+      createWorkout: 'Create new Workout',
+      submit: 'Submit',
+      noWorkout:
+        'There no exercises, go to exercise page and add selected ones to the workout',
+      toExercise: 'Go to exercise list',
     },
   },
 };
