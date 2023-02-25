@@ -243,7 +243,7 @@ class authController {
       const workout = req.query.workout
       const user = await User.findOne({ username })
       const exercise = user.workout.find(item => item.name === workout)
-      res.json(exercise.exercises);
+      res.json(exercise.exercises || []);
     } catch (e) {
       res.status(400).json({ message: 'Error' });
     }
