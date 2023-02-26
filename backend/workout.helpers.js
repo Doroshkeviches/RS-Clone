@@ -18,6 +18,7 @@ const workoutHelpers = {
     headers: {
       'X-RapidAPI-Key': apiKey[getRandomInt(MAX_API_KEY)],
       'X-RapidAPI-Host': 'exerciseapi3.p.rapidapi.com',
+      'Content-Type': 'application/json',
     },
   },
   async createDescription(name) {
@@ -28,6 +29,7 @@ const workoutHelpers = {
           method: 'GET',
           headers: {
             'X-Api-Key': 'b1lF+mYDYzeVz4LE8vl10A==SRghM2llzGl4XzzW',
+            'Content-Type': 'application/json',
           },
         }
       );

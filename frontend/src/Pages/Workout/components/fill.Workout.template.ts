@@ -74,6 +74,7 @@ export async function createWorkoutList(sectionName: 'Workout' | 'Exercises') {
 async function exerciseRequest() {
   try {
     const data = await fetch(`${url}exercisesList`, {
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       },
