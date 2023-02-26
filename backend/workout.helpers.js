@@ -1,3 +1,4 @@
+import fetch from 'node-fetch';
 const apiKey = [
   'bdeff97547msh9e2fb2cf4487c88p1c2cdejsn329751128532',
   '29e98089a8msh3fd3ed66dc3490ap16249fjsn0f190f5481b5',
