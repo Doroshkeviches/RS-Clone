@@ -28,7 +28,4 @@ router.post('/createMyWorkout',controller.createMyWorkout );
 router.get('/userWorkout',controller.getWorkout );
 router.get('/userExercise',controller.getExercise );
 
-
-
-
 module.exports = router;
