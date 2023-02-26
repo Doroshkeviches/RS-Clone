@@ -1,7 +1,8 @@
 import { renderProfileContainer } from './renderProfileContainer';
 import { handleApply } from './handleApply';
+import { url } from '../../../constants';
 export function getProfileData(username: string) {
-  fetch(`http://localhost:5000/auth/searchUser/?name=${username}`, {
+  fetch(`${url}searchUser/?name=${username}`, {
     method: 'GET',
   })
     .then((res) => res.json())
