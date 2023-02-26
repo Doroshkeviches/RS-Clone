@@ -1,5 +1,6 @@
 import { objWorkout } from './interface';
 import i18n from 'i18next';
+import loader from '../../Loader/loaderTemplate';
 
 const WorkoutPopupTemplate = `
   <div class="popup-workout__Wraper">
@@ -31,7 +32,8 @@ export const WorkoutTemplate = `
       <ul class="menu-workout__list">
       </ul>
     </div>
-  </div>`;
+  </div>
+  ${loader}`;
 
 export const linksToNewWorckoutTemplate = `
   <li class="menu-workout__item">
