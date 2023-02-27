@@ -36,6 +36,9 @@ export default {
     },
     exercise: {
       btnAddToWorkout: 'Add to training',
+      type: 'Type',
+      equipment: 'Equipment',
+      muscle: 'Muscle',
       fetchError: {
         name: `Something went wrong! Couldn't fetch exercise's name!`,
         description: `Something went wrong! Couldn't fetch exercise's description!`,

@@ -9,7 +9,6 @@ export function switchLang() {
     '.footer__switch-lang'
   ) as NodeListOf<HTMLElement>;
   const langActive = getCurrentLanguage();
-  console.log(langWraper);
   if (langActive === 'en') {
     langWraper[0].classList.remove('active-lang');
     langWraper[1].classList.add('active-lang');

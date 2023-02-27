@@ -53,9 +53,12 @@ export default async function fillExerciseFields(
     } = data;
 
     exerciseInfo.replaceChildren(
-      createExerciseInfoListItem('Type', infoType),
-      createExerciseInfoListItem('Equipment', infoEquipment),
-      createExerciseInfoListItem('Muscle', infoMuscle.join(','))
+      createExerciseInfoListItem(i18n.t('exercise.type'), infoType),
+      createExerciseInfoListItem(i18n.t('exercise.equipment'), infoEquipment),
+      createExerciseInfoListItem(
+        i18n.t('exercise.muscle'),
+        infoMuscle.join(',')
+      )
     );
   }
 
