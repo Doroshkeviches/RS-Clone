@@ -1,6 +1,6 @@
 import { url } from '../../../../constants';
 export function login(username: string, password: string) {
-  const localUrl = 'http://localhost:8080/';
+  const localUrl = 'https://develop--superlative-mandazi-b3c1c8.netlify.app/';
   const message = document.getElementById('message') as HTMLElement;
   fetch(url + `login`, {
     method: 'POST',
