@@ -7,6 +7,7 @@ export default {
     common: {
       user: 'User',
       password: 'Password',
+      save: 'Save',
       gender: {
         male: 'Male',
         female: 'Female',
