@@ -1,8 +1,10 @@
 import i18n from 'i18next';
 import loaderTemplate from '../Loader/loaderTemplate';
+import { addToWorkoutPopupTemplate } from './addToWorkout/popupTemplate';
 
 export const exerciseTemplate = `
   ${loaderTemplate}
+  ${addToWorkoutPopupTemplate}
   <div class="exercise container">
     <div class="exercise__top">
       <iframe class="exercise__video" src=https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&modestbranding=1>

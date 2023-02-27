@@ -64,9 +64,7 @@
 .exercise__btn-add-to-training {
   width: 60%;
   padding: 14px 24px;
-}
-
-.exercise__btn-add-to-training {
+  will-change: unset;
   background: $color-lightorange;
   color: $color-white;
 }
@@ -83,6 +81,9 @@
   font-size: $font-size-default;
 }
 
+.workout-list__item {
+  display: flex;
+}
 
 @media screen and (max-width: 1000px){
   .exercise__top {
