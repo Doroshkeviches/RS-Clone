@@ -8,6 +8,7 @@ export default {
       user: 'Пользователь',
       password: 'Пароль',
       save: 'Сохранить',
+      apply: 'Применить',
       gender: {
         male: 'Мужской',
         female: 'Женский',
@@ -33,6 +34,14 @@ export default {
         height: 'Введите ваш рост ( 170 )',
         activity: 'Тренировок в неделю ( 2 )',
       },
+    },
+    profile: {
+      name: 'Имя',
+      gender: 'Пол',
+      weight: 'Вес',
+      height: 'Рост',
+      age: 'Возраст',
+      activity: 'Занятость',
     },
     exercise: {
       btnAddToWorkout: 'Добавить в тренировку',

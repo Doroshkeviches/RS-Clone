@@ -8,6 +8,7 @@ export default {
       user: 'User',
       password: 'Password',
       save: 'Save',
+      apply: 'Apply',
       gender: {
         male: 'Male',
         female: 'Female',
@@ -33,6 +34,14 @@ export default {
         height: 'Enter your height ( 170 )',
         activity: 'Trains per week ( 2 )',
       },
+    },
+    profile: {
+      name: 'Name',
+      gender: 'Gender',
+      weight: 'Weight',
+      height: 'Height',
+      age: 'Age',
+      activity: 'Activity',
     },
     exercise: {
       btnAddToWorkout: 'Add to training',
