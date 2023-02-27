@@ -4,7 +4,7 @@ import bicepsImg from '../../../Assets/biceps.jpg';
 import pectoralisImg from '../../../Assets/pectoralis.jpg';
 import tricepsImg from '../../../Assets/triceps.jpg';
 import abdominalImg from '../../../Assets/abdominal.jpg';
-import userImg from '../../../Assets/userImg.jpg';
+import userImg from '../../../Assets/UserImg.jpg';
 import { objWorkout } from './interface';
 import { url } from '../../../constants';
 
