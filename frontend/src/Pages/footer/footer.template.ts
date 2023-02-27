@@ -20,6 +20,11 @@ export const footerTemplate = `
       <a href="https://rs.school/js/" class="footer__link">
         <img src="${rsImg}" alt="github" class="footer__link-img--rs">
       </a>
+      <button class="footer__switch-lang_wraper">
+      <div class="footer__switch-lang">RU</div>   
+      <div class="separator">/</div>
+      <div class="footer__switch-lang">EN</div>
+      </btn>   
     </div>
   </footer>
 `;
