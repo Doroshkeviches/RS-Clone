@@ -53,7 +53,7 @@ export function createExerciseItem(name: string, time: string) {
 export function createWorkoutLinkTemplate(workout: workoutObj) {
   return `
   <a href="#Exercise/{Exercise[counter].name}" class="menu-workout__item_link single-workout__item_link">
-    <iframe src="http://www.youtube.com/embed/${
+    <iframe src="https://www.youtube.com/embed/${
       workout.YouTube
     }" frameborder="0" class="single-workout__item-video"></iframe>
     <h2 class="menu-workout-title single-workout--title">
