@@ -20,7 +20,7 @@ class authController {
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
-        return res.status(400).json({ message: 'Registration error', errors });
+        return res.status(400).json({ message: 'Registration error, password 4 - 10 symbols', errors });
       }
       const { username, password } = req.body;
       const candidate = await User.findOne({ username });

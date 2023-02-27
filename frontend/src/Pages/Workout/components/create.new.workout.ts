@@ -1,5 +1,5 @@
 import { objWorkout } from './interface';
-import userImg from '../../../Assets/userImg.jpg';
+import userImg from '../../../Assets/UserImg.jpg';
 import { url } from '../../../constants';
 import { createCellTemplate } from './Workout.templates';
 
