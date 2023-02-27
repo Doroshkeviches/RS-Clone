@@ -21,11 +21,6 @@ export const headerTemplate = `
             )}</a>
           </li>
           <li class="header__menu-item">
-            <a href="#Statistics" class="header__menu-link">${i18n.t(
-              'header.statistics'
-            )}</a>
-          </li>
-          <li class="header__menu-item">
             <a href="#Profile" class="header__menu-link">${i18n.t(
               'header.profile'
             )}</a>

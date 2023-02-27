@@ -1,19 +1,17 @@
 .exercise.container {
-  min-width: 320px;
-  max-width: 1160px;
   margin: 0 auto;
-  margin-top: 100px;
+  width: 90%
 }
 
 .exercise__info-wrapper {
-  @include flex(flex, normal, start);
+  @include flex(flex, space-between, start);
   flex-direction: column;
-  flex-grow: 1;
-  padding-left: 1rem;
+  height: 270px;
+  
 }
 
 .exercise__top {
-  @include flex(flex, center, center);
+  @include flex(flex, space-between, center);
 }
 
 .exercise__title {
@@ -22,14 +20,13 @@
 }
 
 .exercise__video {
-  @include sixteenNineRatio(480px);
-  margin-right: 120px;
+  width: 50%;
+  height:270px;
   border-radius: 8px;
 }
 
 .exercise__bottom {
   @include flex(flex, center, center);
-  margin-top: 76px;
 }
 
 .exercise__info-lis {
@@ -38,18 +35,15 @@
 
 .exercise__top {
   flex-direction: row;
+  margin-bottom: 32px;
 }
 
 .exercise__info-list {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: row;
   flex-wrap: wrap;
   margin-top: 32px;
-
-  .info-list__item:not(:first-of-type) {
-    margin: 0 1rem 0;
-  }
 }
 
 .exercise__description {
@@ -57,12 +51,19 @@
   color: $color-dark-gray;
   font-size: $font-size-small;
   line-height: 140%;
+  max-height: 300px;
+  overflow-y: scroll;
+  scrollbar-width: none; 
+  
+}
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;  
 }
 
 .exercise__btn-add-to-training {
-  margin-top: 32px;
   width: 60%;
-  height: 54px;
+  padding: 14px 24px;
 }
 
 .exercise__btn-add-to-training {
@@ -77,8 +78,74 @@
 }
 
 .info-list__item-info {
-  margin-top: 8px;
   color: $color-black;
   font-weight: $font-weight-small;
   font-size: $font-size-default;
+}
+
+
+@media screen and (max-width: 1000px){
+  .exercise__top {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .exercise__video{
+    width: 80%;
+    height: 350px;
+  }
+  .exercise__info-wrapper{
+    width: 80%;
+  }
+  .exercise__info-list{
+    flex-direction: column
+  }
+  .info-list__item{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .exercise__info{
+    width: 100%;
+  }
+  .exercise__description{
+    width: 80%;
+  }
+}
+@media screen and (max-width: 700px){
+  .exercise__top {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .exercise__video{
+    width: 80%;
+    height: 220px;
+  }
+  .exercise__info-wrapper{
+    width: 80%;
+    height: 200px;
+  }
+  .exercise__title{
+    font-size: 24px;
+  }
+  .exercise__info-list{
+    font-size: 10px;
+  }
+  .info-list__item-title,
+  .info-list__item-info{
+    font-size: 16px
+  }
+  
+}
+@media screen and (max-width: 500px){
+  .exercise__top {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .exercise__video{
+    width: 90%;
+    height: 200px;
+  }
+  .exercise__info-wrapper{
+    width: 90%;
+  }
 }

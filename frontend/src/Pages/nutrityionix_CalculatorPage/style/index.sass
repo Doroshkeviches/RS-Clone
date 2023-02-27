@@ -107,7 +107,8 @@
 	margin-bottom: 0px
 	margin-right: 10px
 
-.containerItemNutrient 
+.containerItemNutrient,
+.kcal
 	display: flex
 	align-items: center
 	flex-direction: column
@@ -144,7 +145,8 @@
 	font-size: 24px
 	justify-content: space-between
 #total_container_item_remove
-	color: $color-red
+	color: $color-saturatedred
+	cursor: pointer
 #total_container_item_nutritions_kcal,
 #total_container_item_nutritions_protein,
 #total_container_item_nutritions_fat,
@@ -181,8 +183,16 @@
 			width: 80px
 	.item_container 
 		padding: 10px 10px
+	.item_container_nutrients
+		flex-direction: column
+		align-items: flex-start
+	.containerItemNutrient,
+	.kcal
+		flex-direction: row
+		width: 100%
+		justify-content: space-between
 
-@media screen and (max-width: 480px)
+@media screen and (max-width: 520px)
 	.photo 
 		margin-left: 0px
 		&_image 
@@ -190,4 +200,9 @@
 			max-height: 60px	
 		&_container 
 			width: 60px
-	
+	.leftContainer,
+	.rightContainer
+		width: 100%
+	#calculateNutritionContainer
+		flex-wrap: wrap
+		flex-direction: column-reverse

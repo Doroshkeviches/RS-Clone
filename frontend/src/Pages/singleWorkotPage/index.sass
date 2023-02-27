@@ -159,3 +159,30 @@ b
   font-size: $font-size-large
   font-weight: $font-weight-large
   color: $color-lightorange
+
+@media screen and (max-width: 1000px)
+  .timer__panel
+    margin-bottom: 30px
+  .workout
+    flex-direction: column-reverse
+    align-items: center
+  .workout__functional
+    width: 100%
+  .single-workout__item_link
+      width: 100%
+  .workout__info,
+  .workout-link__wraper
+    width: 100%
+  .single-workout__item-video
+    margin: 0 auto
+    flex-direction: column
+    width: 50%
+  .single-workout__item_link
+    display: flex
+    flex-direction: column
+@media screen and (max-width: 700px)
+  .single-workout__item-video
+    width: 70%
+@media screen and (max-width: 500px)
+  .single-workout__item-video
+    width: 90%
