@@ -95,7 +95,7 @@ class authController {
     }
   }
   async createExerciseList(req, res) {
-    const options = workoutHelpers.workoutHelpers.options;
+    const options = workoutHelpers.workoutHelpers.createOptions();
     const arrayMuscule = [];
     const nameArr = [];
     const muscule = await fetch(
@@ -129,7 +129,7 @@ class authController {
     res.json(resultArray);
   }
   async createExercise(req, res) {
-    const options = workoutHelpers.workoutHelpers.options;
+    const options = workoutHelpers.workoutHelpers.createOptions();
     const nameExercise = req.params.name;
     const descriptionApiResponse =
       await workoutHelpers.workoutHelpers.createDescription(nameExercise);
@@ -180,7 +180,7 @@ class authController {
     res.json(objExercise);
   }
   async createWockout(req, res) {
-    const options = workoutHelpers.workoutHelpers.options;
+    const options = workoutHelpers.workoutHelpers.createOptions();
     const nameArr = [];
     const worckoutName = req.params.name;
     const exercise = await fetch(

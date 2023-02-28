@@ -14,13 +14,16 @@ const workoutHelpers = {
   createVideoId(link) {
     return link.split('=')[1].split('&')[0];
   },
-  options: {
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Key': apiKey[getRandomInt(MAX_API_KEY)],
-      'X-RapidAPI-Host': 'exerciseapi3.p.rapidapi.com',
-      'Content-Type': 'application/json',
-    },
+  createOptions() {
+    const options = {
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Key': apiKey[getRandomInt(MAX_API_KEY)],
+        'X-RapidAPI-Host': 'exerciseapi3.p.rapidapi.com',
+        'Content-Type': 'application/json',
+      },
+    }
+    return options
   },
   async createDescription(name) {
     try {
