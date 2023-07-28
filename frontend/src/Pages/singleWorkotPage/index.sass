@@ -1,0 +1,188 @@
+b
+  color: $color-black
+  font-weight: $font-weight-large
+
+.workout
+  padding-top: 30px
+  @include flex(flex, space-between, start)
+  margin-bottom: 20px
+
+.workout__functional
+  width: 49%
+
+.functional__link
+  border-radius: 50%
+  background-color: $color-white
+  width: 44px
+  height: 44px
+  display: block
+  @include flex(flex, center, center)
+  margin-bottom: 30px
+
+.link-img
+  width: 15px
+
+.exercise__list
+  display: flex
+  flex-direction: column
+  height: 490px
+  overflow-y: scroll
+  gap: 15px
+
+.exercise__list::-webkit-scrollbar
+  width: 10px
+
+.exercise__list::-webkit-scrollbar-track
+  background-color: $color-gray
+  border-radius: 5px
+
+.exercise__list::-webkit-scrollbar-thumb
+  border-radius: 5px
+  background-color: $color-lightorange
+
+.exercise__item
+  background-color: $color-white
+  width: 100%
+  border-top-left-radius: 8px
+  border-top-right-radius: 8px
+
+.exercise__item-info
+  height: 68px
+  padding: 0 24px
+  color: $color-black
+  font-weight: $font-weight-large
+  font-size: $font-size-average
+  line-height: 140%
+  @include flex(flex, space-between, center)
+
+.timer__line
+  height: 4px
+  background-color: #F0F0F0
+  border-bottom-left-radius: 8px
+  border-bottom-right-radius: 8px
+  display: none
+
+.timer__line-filling
+  width: 0%
+  height: 100%
+  border-radius: 4px
+  border-top-left-radius: 0px
+  border-bottom-left-radius: 8px
+  background-color: $color-gren
+
+.timer__btn-list
+  margin-top: 40px
+  gap: 10px
+  display: flex
+
+.timer__btn
+  width: 100%
+  height: 54px
+  border-radius: 8px
+  font-weight: $font-weight-large
+  color: $color-white
+  cursor: pointer
+
+.timer__start
+  background-color: $color-gren
+
+.timer__pause
+  background-color: #bcbcbc
+
+.timer__stop
+  background-color: $color-red
+
+.workout__info
+  @include flex(flex, center, center)
+  flex-direction: column
+
+.single-workout__item-video
+  width: 480px
+  height: 270px
+
+.single-workout__item_link
+  width: 480px
+  margin-bottom: 30px
+  padding-bottom: 37px
+  background-color: $color-white
+
+.single-workout--title
+  margin: 37px 35px 0
+  font-size: $font-size-average
+  color: $color-black
+  font-weight: $font-weight-large
+
+.workout-description
+  padding: 0 37px 0 35px
+  margin-top: 12px
+  font-weight: $font-weight-small
+  font-size: $font-size-small
+  color: #313131
+  max-height: 160px
+  overflow-y: scroll
+  scrollbar-color: #6969dd #e0e0e0
+  scrollbar-width: thin
+
+.workout-description::-webkit-scrollbar
+  width: 10px
+
+.workout-description::-webkit-scrollbar-track
+  background-color: $color-gray
+  border-radius: 5px
+
+.workout-description::-webkit-scrollbar-thumb
+  border-radius: 5px
+  background-color: $color-lightorange
+
+.timer__time
+  font-weight: $font-weight-large
+  font-size: $font-size-large
+  color: $color-black
+
+.timer-cell
+  text-align: center
+  font-weight: $font-weight-small
+  font-size: $font-size-small
+  color: $color-dark-gray
+  order: 1
+
+.congratulation__wraper
+  position: absolute
+  width: 100%
+  height: 87%
+  background-color: $color-background-dimming
+  @include flex(flex, center, center)
+  z-index: 2
+  display: none
+
+.congratulation__title
+  font-size: $font-size-large
+  font-weight: $font-weight-large
+  color: $color-lightorange
+
+@media screen and (max-width: 1000px)
+  .timer__panel
+    margin-bottom: 30px
+  .workout
+    flex-direction: column-reverse
+    align-items: center
+  .workout__functional
+    width: 100%
+  .single-workout__item_link
+      width: 100%
+  .workout__info,
+  .workout-link__wraper
+    width: 100%
+  .single-workout__item-video
+    margin: 0 auto
+    flex-direction: column
+    width: 50%
+  .single-workout__item_link
+    display: flex
+    flex-direction: column
+@media screen and (max-width: 700px)
+  .single-workout__item-video
+    width: 70%
+@media screen and (max-width: 500px)
+  .single-workout__item-video
+    width: 90%

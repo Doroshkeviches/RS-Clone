@@ -1,0 +1,209 @@
+.leftContainer, .rightContainer 
+	width: 49.5%
+	color: $color-black
+	margin-top: 20px
+
+#calculateNutritionContainer 
+	min-height: 79.46vh
+	display: flex
+	justify-content: space-between
+	width: 90%
+	margin: 0 auto
+
+.item_container 
+	background-color: $color-white
+	margin-bottom: 15px
+	border-radius: 8px
+	padding: 10px 20px
+	&_calculator 
+		display: flex
+		align-items: center
+		flex-wrap: wrap
+	
+	&_nutrients 
+		display: flex
+		width: 100%
+		justify-content: space-between
+		margin-top: 10px
+		
+
+.leftContainerItems 
+	width: 100%
+
+.disabled 
+	display: none
+
+.calculator_container, .total_container_item 
+	padding: 20px 10px
+	background-color: $color-white
+	margin-bottom: 20px
+.left_container_search_button
+	margin-right: 20px
+.total_container_item 
+	display: flex
+	align-items: center
+	justify-content: space-between
+	padding: 20px 10px
+
+#total_container_item_nutritions 
+	display: flex
+	align-items: center
+	justify-content: space-evenly
+	width: 70%
+
+#calculatorSumbit:hover
+	cursor: pointer
+	color: $color-gren
+
+
+#progress_Container 
+	width: 90% 
+	margin: 0 auto
+	height: 5px
+	padding: 1px
+	border-radius: 2px
+	margin-bottom: 20px
+
+#progress 
+	background: $color-gren
+	border-radius: 2px
+	height: 5px
+	width: 0%
+
+#calculator_footer_text 
+	display: flex
+	flex-direction: column
+	justify-content: space-between
+	width: 100%
+	margin: 0 auto
+.calculator_footer_text_nutrition
+		display: flex
+		justify-content: space-between
+
+#svgArrow
+	transition: 0.5s
+
+.search_container 
+	width: 100%
+	margin: 0 auto
+	margin-bottom: 20px
+	background-color: $color-white
+	display: flex
+	align-items: center
+
+#leftContainerInputSearch 
+	padding: 20px 0px 20px 20px
+	width: 90%
+	border: none
+	font-weight: 200
+	margin-bottom: 0px
+
+#leftContainerInputSearch:focus
+	outline: 0
+	outline-offset: 0
+
+#Item_container_calculator_input
+	border: 1px solid black
+	width: 40%
+	margin-bottom: 0px
+	margin-right: 10px
+
+.containerItemNutrient,
+.kcal
+	display: flex
+	align-items: center
+	flex-direction: column
+
+
+
+.photo 
+	display: flex
+	align-items: center
+	height: 100px
+	
+	justify-content: flex-start
+	margin-left: 20px
+	&_image 
+		max-width: 100px
+		max-height: 100px	
+	&_container 
+		width: 100px
+		
+	
+
+#foodItemPopup 
+	width: 30px
+	height: 30px
+	margin-right: 10px
+
+.calculator_item_main 
+	display: flex
+	justify-content: space-between
+	align-items: center
+
+.calculator_aim 
+	display: flex
+	font-size: 24px
+	justify-content: space-between
+#total_container_item_remove
+	color: $color-saturatedred
+	cursor: pointer
+#total_container_item_nutritions_kcal,
+#total_container_item_nutritions_protein,
+#total_container_item_nutritions_fat,
+#total_container_item_nutritions_carbohydrate
+	display: flex
+	flex-direction: column
+	align-items: center
+
+	
+@media screen and (max-width: 1024px)
+	#calculateNutritionContainer
+		font-size: 14px
+
+@media screen and (max-width: 768px)
+	#calculateNutritionContainer
+		font-size: 14px
+	#total_container_item_nutritions
+		width: fit-content
+		flex-direction: column
+	#total_container_item_nutritions_kcal,
+	#total_container_item_nutritions_protein,
+	#total_container_item_nutritions_fat,
+	#total_container_item_nutritions_carbohydrate
+		flex-direction: row
+		justify-content: space-between
+		width: 100%
+		margin-bottom: 5px
+	.photo 
+		margin-left: 0px
+		&_image 
+			max-width: 80px
+			max-height: 80px	
+		&_container 
+			width: 80px
+	.item_container 
+		padding: 10px 10px
+	.item_container_nutrients
+		flex-direction: column
+		align-items: flex-start
+	.containerItemNutrient,
+	.kcal
+		flex-direction: row
+		width: 100%
+		justify-content: space-between
+
+@media screen and (max-width: 520px)
+	.photo 
+		margin-left: 0px
+		&_image 
+			max-width: 60px
+			max-height: 60px	
+		&_container 
+			width: 60px
+	.leftContainer,
+	.rightContainer
+		width: 100%
+	#calculateNutritionContainer
+		flex-wrap: wrap
+		flex-direction: column-reverse

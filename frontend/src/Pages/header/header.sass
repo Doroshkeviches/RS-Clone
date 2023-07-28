@@ -1,0 +1,21 @@
+header
+  background-color: $color-background-primary
+
+.header__menu
+  max-width: 800px
+  margin: 0 auto
+  padding: 0 10px
+  height: 13vh
+
+.header__menu-list
+  @include flex(flex, space-between, center)
+  height: 100%
+
+.header__menu-item
+  color: $color-gray
+
+.header__menu-item:hover
+  color: $color-lightorange
+
+.active-link
+  color: $color-lightorange
