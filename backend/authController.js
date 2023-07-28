@@ -1,18 +1,18 @@
-const fetch = require('node-fetch');
-const User = require('./models/User');
-const Role = require('./models/Role');
-const bcrypt = require('bcryptjs');
-const { validationResult } = require('express-validator');
-const jwt = require('jsonwebtoken');
-const { secret } = require('./config');
-const workoutHelpers = require('./workout.helpers');
+const fetch = require("node-fetch");
+const User = require("./models/User");
+const Role = require("./models/Role");
+const bcrypt = require("bcryptjs");
+const { validationResult } = require("express-validator");
+const jwt = require("jsonwebtoken");
+const { secret } = require("./config");
+const workoutHelpers = require("./workout.helpers");
 
 function generateAccessToken(id, roles) {
   const payload = {
     id,
     roles,
   };
-  return jwt.sign(payload, secret, { expiresIn: '24h' });
+  return jwt.sign(payload, secret, { expiresIn: "24h" });
 }
 
 class authController {
@@ -20,17 +20,20 @@ class authController {
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
-        return res.status(400).json({ message: 'Registration error, password 4 - 10 symbols', errors });
+        return res.status(400).json({
+          message: "Registration error, password 4 - 10 symbols",
+          errors,
+        });
       }
       const { username, password } = req.body;
       const candidate = await User.findOne({ username });
       if (candidate) {
         return res
           .status(400)
-          .json({ message: 'A user with the same name already exists' });
+          .json({ message: "A user with the same name already exists" });
       }
       const hashPassword = bcrypt.hashSync(password, 7);
-      const userRole = await Role.findOne({ value: 'USER' });
+      const userRole = { value: "USER" };
       const user = new User({
         username,
         password: hashPassword,
@@ -39,7 +42,7 @@ class authController {
       await user.save();
       return res.json({ message: `The user has been successfully registered` });
     } catch (e) {
-      res.status(400).json({ message: 'Registration error' });
+      res.status(400).json({ message: "Registration error" });
     }
   }
   async changeValue(req, res) {
@@ -62,7 +65,7 @@ class authController {
         userRole,
       });
     } catch (e) {
-      res.status(400).json({ message: 'User update error' });
+      res.status(400).json({ message: "User update error" });
     }
   }
   async login(req, res) {
@@ -79,13 +82,13 @@ class authController {
       const token = generateAccessToken(user._id, user.roles);
       return res.json({ token });
     } catch (e) {
-      res.status(400).json({ message: 'Login failed' });
+      res.status(400).json({ message: "Login failed" });
     }
   }
   async getUser(req, res) {
     try {
       const username = req.query.name;
-      const user = await User.findOne({ username })
+      const user = await User.findOne({ username });
       if (!user) {
         return res.status(404).json({ message: `User ${username} not found` });
       }
@@ -114,7 +117,7 @@ class authController {
     const resultArray = await Promise.all(
       arrayMuscule.map(async (exercise) => {
         const videoId = workoutHelpers.workoutHelpers.createVideoId(
-          exercise['Youtube link']
+          exercise["Youtube link"]
         );
         const objExercise = {
           name: exercise.Name,
@@ -141,35 +144,37 @@ class authController {
     const exercise = await exercisePromise.json();
     const exerciseObj = exercise[0] || {};
 
-    if (!(exerciseObj?.['Name'] || descriptionApiResponse?.['name'])) {
+    if (!(exerciseObj?.["Name"] || descriptionApiResponse?.["name"])) {
       res.status(404).json({});
       return;
     }
 
     const getImg = (exerciseObj) => {
-      if (exerciseObj?.['Youtube link']) {
-        const videoId = workoutHelpers.workoutHelpers.createVideoId(exerciseObj['Youtube link']);
+      if (exerciseObj?.["Youtube link"]) {
+        const videoId = workoutHelpers.workoutHelpers.createVideoId(
+          exerciseObj["Youtube link"]
+        );
         return `https://img.youtube.com/vi/${videoId}mqdefault.jpg`;
       }
 
       return null;
-    }
+    };
 
     const getMuscle = (exerciseObj, descriptionApiResponse) => {
-      if (exerciseObj?.['Primary Muscles']) {
-        return exerciseObj['Primary Muscles'];
+      if (exerciseObj?.["Primary Muscles"]) {
+        return exerciseObj["Primary Muscles"];
       }
 
-      if (descriptionApiResponse?.['muscule']) {
+      if (descriptionApiResponse?.["muscule"]) {
         return [descriptionApiResponse.muscule];
       }
 
       return [];
-    }
+    };
 
     const objExercise = {
       name: descriptionApiResponse?.name || exerciseObj?.Name || null,
-      YouTube: exerciseObj?.['Youtube link'] || null,
+      YouTube: exerciseObj?.["Youtube link"] || null,
       Musclse: getMuscle(exerciseObj, descriptionApiResponse),
       Type: exerciseObj?.Type || null,
       Img: getImg(exerciseObj),
@@ -191,23 +196,24 @@ class authController {
     const resultArray = await Promise.all(
       dataExercise.map(async (exercise) => {
         const videoId = workoutHelpers.workoutHelpers.createVideoId(
-          exercise['Youtube link']
+          exercise["Youtube link"]
         );
         const descriptionApiResponse =
           await workoutHelpers.workoutHelpers.createDescription(exercise.Name);
         const objExercise = {
           name: exercise.Name,
           YouTube: workoutHelpers.workoutHelpers.createVideoId(
-            exercise['Youtube link']),
-          Musclse: exercise['Primary Muscles'],
+            exercise["Youtube link"]
+          ),
+          Musclse: exercise["Primary Muscles"],
           Type: exercise.Type,
           Img: `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`,
           equipment: descriptionApiResponse
             ? descriptionApiResponse.equipment
-            : '',
+            : "",
           description: descriptionApiResponse
             ? descriptionApiResponse.instructions
-            : '',
+            : "",
           time: workoutHelpers.workoutHelpers.workoutTime,
         };
         if (!nameArr.includes(exercise.name)) {
@@ -218,35 +224,35 @@ class authController {
     );
     res.json(resultArray);
   }
-  async createMyWorkout(req,res){
+  async createMyWorkout(req, res) {
     try {
-      const {username, workout} = req.body
-      const user = await User.findOne({ username })
-      user.workout = workout
+      const { username, workout } = req.body;
+      const user = await User.findOne({ username });
+      user.workout = workout;
       await user.save();
-      return res.json({message: `Done`,});
+      return res.json({ message: `Done` });
     } catch (e) {
-      res.status(400).json({ message: 'Error' });
+      res.status(400).json({ message: "Error" });
     }
   }
-  async getWorkout(req,res){
+  async getWorkout(req, res) {
     try {
-      const username = req.query.name
-      const user = await User.findOne({ username })
+      const username = req.query.name;
+      const user = await User.findOne({ username });
       res.json(user.workout);
     } catch (e) {
-      res.status(400).json({ message: 'Error' });
+      res.status(400).json({ message: "Error" });
     }
   }
-  async getExercise(req,res){
+  async getExercise(req, res) {
     try {
-      const username = req.query.name
-      const workout = req.query.workout
-      const user = await User.findOne({ username })
-      const exercise = user.workout.find(item => item.name === workout)
+      const username = req.query.name;
+      const workout = req.query.workout;
+      const user = await User.findOne({ username });
+      const exercise = user.workout.find((item) => item.name === workout);
       res.json(exercise.exercises || []);
     } catch (e) {
-      res.status(400).json({ message: 'Error' });
+      res.status(400).json({ message: "Error" });
     }
   }
 }
